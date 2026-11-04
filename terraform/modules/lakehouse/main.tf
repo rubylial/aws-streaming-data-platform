@@ -40,7 +40,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "lakehouse" {
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = "aws:kms"
+      sse_algorithm     = "aws:kms"
       kms_master_key_id = var.kms_key_arn
     }
     bucket_key_enabled = true
@@ -69,9 +69,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "lakehouse" {
 # --------------------------------------------------------
 
 resource "aws_glue_catalog_database" "lakehouse" {
-  name         = "${replace(var.project_name, "-", "_")}_${var.environment}"
-  description  = "Lakehouse Iceberg — catálogo para tablas de transacciones procesadas por Flink"
-  catalog_id   = data.aws_caller_identity.current.account_id
+  name        = "${replace(var.project_name, "-", "_")}_${var.environment}"
+  description = "Lakehouse Iceberg — catálogo para tablas de transacciones procesadas por Flink"
+  catalog_id  = data.aws_caller_identity.current.account_id
 
   tags = merge(var.tags, {
     Component = "lakehouse"
@@ -90,10 +90,10 @@ resource "aws_glue_catalog_table" "transactions" {
   table_type    = "EXTERNAL_TABLE"
 
   parameters = {
-    "table_type"          = "ICEBERG"
-    "format"              = "parquet"
-    "write_compression"   = "snappy"
-    "metadata_location"   = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/transactions/metadata"
+    "table_type"        = "ICEBERG"
+    "format"            = "parquet"
+    "write_compression" = "snappy"
+    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/transactions/metadata"
   }
 
   open_table_format_input {
