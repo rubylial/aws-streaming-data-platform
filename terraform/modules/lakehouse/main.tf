@@ -93,8 +93,7 @@ resource "aws_glue_catalog_table" "transactions" {
     "table_type"        = "ICEBERG"
     "format"            = "parquet"
     "write_compression" = "snappy"
-    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/transactions/metadata"
-  }
+    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/merchant_aggregations/metadata"  }
 
   open_table_format_input {
     iceberg_input {
