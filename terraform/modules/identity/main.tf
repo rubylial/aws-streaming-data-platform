@@ -381,9 +381,9 @@ resource "aws_iam_policy" "passrole_control" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid    = "AllowPassRoleToFirehose"
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Sid      = "AllowPassRoleToFirehose"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = aws_iam_role.firehose_delivery.arn
         Condition = {
           StringEquals = {
@@ -392,9 +392,9 @@ resource "aws_iam_policy" "passrole_control" {
         }
       },
       {
-        Sid    = "AllowPassRoleToFlink"
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Sid      = "AllowPassRoleToFlink"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = aws_iam_role.flink_execution.arn
         Condition = {
           StringEquals = {
@@ -403,9 +403,9 @@ resource "aws_iam_policy" "passrole_control" {
         }
       },
       {
-        Sid    = "AllowPassRoleToGlue"
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Sid      = "AllowPassRoleToGlue"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = aws_iam_role.glue_service.arn
         Condition = {
           StringEquals = {
@@ -414,9 +414,9 @@ resource "aws_iam_policy" "passrole_control" {
         }
       },
       {
-        Sid    = "AllowPassRoleToRedshift"
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Sid      = "AllowPassRoleToRedshift"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = aws_iam_role.redshift_service.arn
         Condition = {
           StringEquals = {
