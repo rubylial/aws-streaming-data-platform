@@ -1,0 +1,22 @@
+# ============================================================
+# terraform.tfvars.example — Valores de ejemplo para dev
+# ============================================================
+# Copiar como terraform.tfvars y ajustar valores reales.
+# NUNCA commitear terraform.tfvars (está en .gitignore).
+#
+# Uso:
+#   cp terraform.tfvars.example terraform.tfvars
+#   # editar valores
+#   terraform plan -var-file=terraform.tfvars
+# ============================================================
+
+project_name = "streaming-data-platform"
+environment  = "dev"
+aws_region   = "us-east-1"
+
+vpc_cidr             = "10.0.0.0/16"
+private_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+availability_zones   = ["us-east-1a", "us-east-1b"]
+
+# Output del bootstrap — reemplazar con valor real tras ejecutar bootstrap
+state_bucket_arn = "arn:aws:s3:::streaming-data-platform-tf-state-dev"

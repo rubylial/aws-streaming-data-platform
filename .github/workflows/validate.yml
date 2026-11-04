@@ -1,0 +1,92 @@
+# ============================================================
+# CI — Validación Estática de Terraform
+# ============================================================
+# Solo validación de sintaxis y formato. NUNCA ejecuta:
+# apply, destroy, deploy, plan (requiere credenciales AWS).
+#
+# Política de costo cero: sin credenciales AWS, sin recursos
+# reales, sin secretos en el workflow.
+# ============================================================
+
+name: "Terraform Validate"
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+    paths:
+      - 'terraform/**'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+
+# Permisos mínimos — solo lectura del repo
+permissions:
+  contents: read
+
+jobs:
+  terraform-fmt:
+    name: "Terraform Format Check"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.7"
+          terraform_wrapper: false
+
+      - name: Terraform fmt -check (recursive)
+        run: terraform fmt -check -recursive -diff terraform/
+
+  terraform-validate-bootstrap:
+    name: "Validate — bootstrap"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.7"
+          terraform_wrapper: false
+
+      - name: Terraform Init (bootstrap)
+        working-directory: terraform/bootstrap
+        run: terraform init -backend=false
+
+      - name: Terraform Validate (bootstrap)
+        working-directory: terraform/bootstrap
+        run: terraform validate
+
+  terraform-validate-dev:
+    name: "Validate — environments/dev"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.7"
+          terraform_wrapper: false
+
+      # Init sin backend real — solo descarga providers y valida
+      - name: Terraform Init (dev, no backend)
+        working-directory: terraform/environments/dev
+        run: terraform init -backend=false
+
+      - name: Terraform Validate (dev)
+        working-directory: terraform/environments/dev
+        run: terraform validate
