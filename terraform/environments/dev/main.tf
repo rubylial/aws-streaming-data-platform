@@ -61,5 +61,7 @@ module "ingestion" {
   firehose_buffer_size     = var.firehose_buffer_size
   firehose_buffer_interval = var.firehose_buffer_interval
 
-  tags = local.common_tags
+  tags = {
+    Component = "ingestion"
+  }
 }
