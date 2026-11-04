@@ -1,18 +1,15 @@
 # ============================================================
 # Root Module — Environment Dev
 # ============================================================
-# Compone los módulos de networking e identity para el
-# ambiente de desarrollo. Cada módulo se invoca una sola vez
-# con variables del entorno.
+# Compone los módulos de networking, identity e ingestion
+# para el ambiente de desarrollo.
 #
 # Requisito PE1 (22%): modularización y reutilización.
+# Requisito PE2: integración del módulo de ingesta.
 # ============================================================
 
 # --------------------------------------------------------
-# Módulo Networking
-# --------------------------------------------------------
-# Crea: VPC, subredes privadas multi-AZ, route table,
-# S3 Gateway Endpoint, SG base.
+# Módulo Networking (PE1)
 # --------------------------------------------------------
 
 module "networking" {
@@ -30,10 +27,7 @@ module "networking" {
 }
 
 # --------------------------------------------------------
-# Módulo Identity
-# --------------------------------------------------------
-# Crea: roles IAM segregados por servicio (Firehose, Flink,
-# Glue, Redshift) con mínimo privilegio y PassRole controlado.
+# Módulo Identity (PE1)
 # --------------------------------------------------------
 
 module "identity" {
@@ -46,5 +40,28 @@ module "identity" {
 
   tags = {
     Component = "identity"
+  }
+}
+
+# --------------------------------------------------------
+# Módulo Ingestion (PE2)
+# --------------------------------------------------------
+# Kinesis Data Stream + Firehose -> S3 Bronze + KMS + CW
+# --------------------------------------------------------
+
+module "ingestion" {
+  source = "../../modules/ingestion"
+
+  project_name       = var.project_name
+  environment        = var.environment
+  firehose_role_arn  = module.identity.firehose_delivery_role_arn
+  firehose_role_name = module.identity.firehose_delivery_role_name
+
+  kinesis_shard_count      = var.kinesis_shard_count
+  firehose_buffer_size     = var.firehose_buffer_size
+  firehose_buffer_interval = var.firehose_buffer_interval
+
+  tags = {
+    Component = "ingestion"
   }
 }

@@ -1,6 +1,6 @@
 # ============================================================
 # Variables — Environment Dev
-# ============================================================
+# =============================================================
 
 variable "project_name" {
   description = "Nombre del proyecto para naming y tagging"
@@ -41,4 +41,24 @@ variable "availability_zones" {
 variable "state_bucket_arn" {
   description = "ARN del bucket S3 de Terraform state (output del bootstrap)"
   type        = string
+}
+
+# --- PE2: Ingestion ---
+
+variable "kinesis_shard_count" {
+  description = "Número de shards para Kinesis (mínimo 2)"
+  type        = number
+  default     = 2
+}
+
+variable "firehose_buffer_size" {
+  description = "Buffer size de Firehose en MB"
+  type        = number
+  default     = 5
+}
+
+variable "firehose_buffer_interval" {
+  description = "Buffer interval de Firehose en segundos"
+  type        = number
+  default     = 60
 }

@@ -1,8 +1,8 @@
-# ============================================================
+# =============================================================
 # Outputs — Environment Dev
 # ============================================================
 
-# --- Networking ---
+# --- Networking (PE1) ---
 
 output "vpc_id" {
   description = "ID de la VPC"
@@ -24,7 +24,7 @@ output "internal_security_group_id" {
   value       = module.networking.internal_security_group_id
 }
 
-# --- Identity ---
+# --- Identity (PE1) ---
 
 output "firehose_delivery_role_arn" {
   description = "ARN del rol de Firehose"
@@ -44,4 +44,31 @@ output "glue_service_role_arn" {
 output "redshift_service_role_arn" {
   description = "ARN del rol de Redshift"
   value       = module.identity.redshift_service_role_arn
+}
+
+# --- Ingestion (PE2) ---
+
+output "kinesis_stream_name" {
+  description = "Nombre del Kinesis Data Stream"
+  value       = module.ingestion.kinesis_stream_name
+}
+
+output "kinesis_stream_arn" {
+  description = "ARN del Kinesis Data Stream"
+  value       = module.ingestion.kinesis_stream_arn
+}
+
+output "firehose_delivery_stream_name" {
+  description = "Nombre del Firehose Delivery Stream"
+  value       = module.ingestion.firehose_delivery_stream_name
+}
+
+output "bronze_bucket_name" {
+  description = "Nombre del bucket S3 bronze"
+  value       = module.ingestion.bronze_bucket_name
+}
+
+output "kms_key_arn" {
+  description = "ARN de la CMK de streaming"
+  value       = module.ingestion.kms_key_arn
 }
