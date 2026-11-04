@@ -93,8 +93,8 @@ resource "aws_glue_catalog_table" "transactions" {
     "table_type"        = "ICEBERG"
     "format"            = "parquet"
     "write_compression" = "snappy"
-    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/merchant_aggregations/metadata"  }
-
+    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/transactions/metadata"
+  }
   open_table_format_input {
     iceberg_input {
       metadata_operation = "CREATE"
@@ -154,12 +154,11 @@ resource "aws_glue_catalog_table" "merchant_aggregations" {
   table_type    = "EXTERNAL_TABLE"
 
   parameters = {
-    "table_type"          = "ICEBERG"
-    "format"              = "parquet"
-    "write_compression"   = "snappy"
-    "metadata_location"   = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/merchant_aggregations/metadata"
+    "table_type"        = "ICEBERG"
+    "format"            = "parquet"
+    "write_compression" = "snappy"
+    "metadata_location" = "s3://${aws_s3_bucket.lakehouse.id}/warehouse/merchant_aggregations/metadata"
   }
-
   open_table_format_input {
     iceberg_input {
       metadata_operation = "CREATE"
