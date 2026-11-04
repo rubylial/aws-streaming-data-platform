@@ -1,0 +1,60 @@
+# ============================================================
+# Productor de sensores urbanos — Deployment
+# PE3: genera JSON a topic urban_sensors
+# ============================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sensor-producer
+  namespace: urban-sensors
+  labels:
+    app: sensor-producer
+    app.kubernetes.io/part-of: pe3-kafka-spark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sensor-producer
+  template:
+    metadata:
+      labels:
+        app: sensor-producer
+    spec:
+      initContainers:
+        - name: wait-for-kafka
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a Kafka..."
+              until nc -z kafka 9092; do
+                sleep 2
+              done
+              echo "Kafka disponible"
+      containers:
+        - name: producer
+          image: python:3.11-slim
+          command:
+            - python
+            - /app/producer_sensors.py
+            - --bootstrap-servers
+            - kafka:9092
+            - --topic
+            - urban_sensors
+            - --interval
+            - "2"
+          volumeMounts:
+            - name: producer-code
+              mountPath: /app
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+      volumes:
+        - name: producer-code
+          configMap:
+            name: producer-code
