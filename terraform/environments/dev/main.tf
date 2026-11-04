@@ -63,4 +63,3 @@ module "ingestion" {
 
   tags = local.common_tags
 }
-}
