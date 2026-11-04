@@ -163,9 +163,9 @@ resource "aws_kinesisanalyticsv2_application" "flink_app" {
 
     flink_application_configuration {
       checkpoint_configuration {
-        configuration_type = "CUSTOM"
-        checkpointing_enabled = true
-        checkpoint_interval   = 60000
+        configuration_type            = "CUSTOM"
+        checkpointing_enabled         = true
+        checkpoint_interval           = 60000
         min_pause_between_checkpoints = 30000
       }
 
@@ -176,9 +176,9 @@ resource "aws_kinesisanalyticsv2_application" "flink_app" {
       }
 
       parallelism_configuration {
-        configuration_type  = "CUSTOM"
-        parallelism         = 2
-        parallelism_per_kpu = 1
+        configuration_type   = "CUSTOM"
+        parallelism          = 2
+        parallelism_per_kpu  = 1
         auto_scaling_enabled = false
       }
     }
