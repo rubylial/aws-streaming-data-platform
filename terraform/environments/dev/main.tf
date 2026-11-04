@@ -52,8 +52,8 @@ module "identity" {
 module "ingestion" {
   source = "../../modules/ingestion"
 
-  project_name     = var.project_name
-  environment      = var.environment
+  project_name       = var.project_name
+  environment        = var.environment
   firehose_role_arn  = module.identity.firehose_delivery_role_arn
   firehose_role_name = module.identity.firehose_delivery_role_name
 
@@ -61,7 +61,6 @@ module "ingestion" {
   firehose_buffer_size     = var.firehose_buffer_size
   firehose_buffer_interval = var.firehose_buffer_interval
 
-  tags = {
-    Component = "ingestion"
-  }
+  tags = local.common_tags
+}
 }
