@@ -1,0 +1,82 @@
+# ============================================================
+# AWS Streaming Data Platform — .gitignore
+# ============================================================
+
+# ---------- Terraform ----------
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+*.tfplan
+.terraform.lock.hcl
+
+# ---------- Terraform variables con valores reales ----------
+terraform.tfvars
+*.auto.tfvars
+!terraform.tfvars.example
+
+# ---------- AWS / Secrets ----------
+.aws/
+*.pem
+*.key
+*.env
+.env.*
+credentials
+credentials.*
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+.pip/
+
+# ---------- Java / Flink ----------
+target/
+*.class
+*.jar
+!flink-app/lib/*.jar
+*.war
+*.ear
+.gradle/
+build/
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Docker / K8s ----------
+docker-compose.override.yml
+
+# ---------- Logs ----------
+*.log
+logs/
+
+# ---------- Datos de prueba generados ----------
+test-output/
+tmp/
