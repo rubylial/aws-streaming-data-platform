@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: urban-sensors
+  labels:
+    app.kubernetes.io/part-of: pe3-kafka-spark
+    environment: dev
