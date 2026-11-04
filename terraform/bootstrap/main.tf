@@ -1,20 +1,22 @@
 # ============================================================
-# Bootstrap — S3 Backend + DynamoDB Lock Table
+# Bootstrap — Backend Remoto (S3 + DynamoDB)
 # ============================================================
-# Este módulo crea los recursos necesarios para el backend
-# remoto de Terraform ANTES de que el backend esté configurado.
+# Crea los recursos necesarios para almacenar el estado de
+# Terraform de forma remota y segura.
 #
-# Uso (una sola vez, con credenciales AWS configuradas):
+# Recursos:
+# - S3 Bucket: almacena terraform.tfstate cifrado con SSE-KMS
+# - DynamoDB Table: proporciona locking para evitar escrituras
+#   concurrentes (requerido por rúbrica PE1 — ver ADR-0002)
+#
+# Ejecución:
 #   cd terraform/bootstrap
 #   terraform init
 #   terraform plan -out=bootstrap.tfplan
-#   terraform apply bootstrap.tfplan    # ← REQUIERE APROBACIÓN
+#   terraform apply bootstrap.tfplan
 #
-# IMPORTANTE: Este bootstrap usa state local. Una vez creados
-# los recursos, el state principal en environments/dev/ usará
-# el backend S3 remoto.
-#
-# BLOQUEADO_POR_COSTO: No ejecutar sin autorización explícita.
+# BLOQUEADO_POR_COSTO: No ejecutar sin aprobación explícita.
+# Este módulo SÍ requiere AWS real para crear el backend.
 # ============================================================
 
 terraform {
@@ -26,35 +28,7 @@ terraform {
       version = "~> 5.0"
     }
   }
-
-  # Bootstrap usa state LOCAL — es intencional
 }
-
-# --------------------------------------------------------
-# Variables
-# --------------------------------------------------------
-
-variable "project_name" {
-  description = "Nombre del proyecto para tagging y naming"
-  type        = string
-  default     = "streaming-data-platform"
-}
-
-variable "environment" {
-  description = "Ambiente (dev, staging, prod)"
-  type        = string
-  default     = "dev"
-}
-
-variable "aws_region" {
-  description = "Región AWS para los recursos del backend"
-  type        = string
-  default     = "us-east-1"
-}
-
-# --------------------------------------------------------
-# Provider
-# --------------------------------------------------------
 
 provider "aws" {
   region = var.aws_region
@@ -68,14 +42,45 @@ provider "aws" {
   }
 }
 
-# --------------------------------------------------------
-# S3 Bucket para Terraform State
-# --------------------------------------------------------
+# ============================================================
+# Variables
+# ============================================================
+
+variable "project_name" {
+  description = "Nombre del proyecto para naming de recursos"
+  type        = string
+  default     = "streaming-data-platform"
+}
+
+variable "environment" {
+  description = "Ambiente (dev, staging, prod)"
+  type        = string
+  default     = "dev"
+}
+
+variable "aws_region" {
+  description = "Región AWS"
+  type        = string
+  default     = "us-east-1"
+}
+
+# ============================================================
+# S3 Bucket — Estado de Terraform
+# ============================================================
+# - Versionado habilitado para historial de estados
+# - Cifrado SSE-KMS (por defecto aws/s3 key)
+# - Bloqueo de acceso público
+# - prevent_destroy como salvaguarda
+# ============================================================
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "${var.project_name}-tf-state-${var.environment}"
 
-  # Prevenir destrucción accidental del state
+  tags = {
+    Name    = "${var.project_name}-tf-state-${var.environment}"
+    Purpose = "terraform-backend"
+  }
+
   lifecycle {
     prevent_destroy = true
   }
@@ -109,14 +114,16 @@ resource "aws_s3_bucket_public_access_block" "terraform_state" {
   restrict_public_buckets = true
 }
 
-# --------------------------------------------------------
-# DynamoDB Table para State Locking
-# --------------------------------------------------------
+# ============================================================
+# DynamoDB Table — State Locking
+# ============================================================
+# Requerido por rúbrica PE1. Previene escrituras concurrentes
+# al estado de Terraform.
+#
 # Nota: DynamoDB locking está deprecado en Terraform >= 1.10
-# a favor de S3 native locking (use_lockfile). Se mantiene
-# para cumplir con el requisito de la rúbrica PE1.
-# Ver ADR-0002 para detalles y plan de migración.
-# --------------------------------------------------------
+# a favor de use_lockfile. Se mantiene por exigencia académica.
+# Ver ADR-0002 para decisión y plan de migración.
+# ============================================================
 
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "${var.project_name}-tf-locks-${var.environment}"
@@ -127,30 +134,40 @@ resource "aws_dynamodb_table" "terraform_locks" {
     name = "LockID"
     type = "S"
   }
+
+  tags = {
+    Name    = "${var.project_name}-tf-locks-${var.environment}"
+    Purpose = "terraform-state-locking"
+  }
 }
 
-# --------------------------------------------------------
-# Outputs — usar estos valores en backend.tf de environments/
-# --------------------------------------------------------
+# ============================================================
+# Outputs
+# ============================================================
 
 output "state_bucket_name" {
-  description = "Nombre del bucket S3 para Terraform state"
+  description = "Nombre del bucket S3 para el estado de Terraform"
   value       = aws_s3_bucket.terraform_state.id
 }
 
 output "state_bucket_arn" {
-  description = "ARN del bucket S3 para Terraform state"
+  description = "ARN del bucket S3 para el estado de Terraform"
   value       = aws_s3_bucket.terraform_state.arn
 }
 
-output "lock_table_name" {
+output "locks_table_name" {
   description = "Nombre de la tabla DynamoDB para locking"
   value       = aws_dynamodb_table.terraform_locks.name
 }
 
+output "locks_table_arn" {
+  description = "ARN de la tabla DynamoDB para locking"
+  value       = aws_dynamodb_table.terraform_locks.arn
+}
+
 output "backend_config" {
   description = "Configuración de backend para copiar en environments/dev/backend.tf"
-  value = <<-EOT
+  value       = <<-EOT
     backend "s3" {
       bucket         = "${aws_s3_bucket.terraform_state.id}"
       key            = "environments/dev/terraform.tfstate"
