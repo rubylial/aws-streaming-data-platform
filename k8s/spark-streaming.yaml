@@ -1,0 +1,77 @@
+# ============================================================
+# Spark Structured Streaming — Deployment
+# PE3: consume urban_sensors, ventana 1 min, promedio temp y AQI
+# ============================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-streaming
+  namespace: urban-sensors
+  labels:
+    app: spark-streaming
+    app.kubernetes.io/part-of: pe3-kafka-spark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-streaming
+  template:
+    metadata:
+      labels:
+        app: spark-streaming
+    spec:
+      initContainers:
+        - name: wait-for-kafka
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Esperando a Kafka..."
+              until nc -z kafka 9092; do
+                sleep 5
+              done
+              echo "Kafka disponible"
+      containers:
+        - name: spark
+          image: bitnami/spark:3.5.1
+          command:
+            - spark-submit
+            - --packages
+            - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1
+            - /app/spark_streaming_job.py
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka:9092"
+            - name: KAFKA_TOPIC
+              value: "urban_sensors"
+          volumeMounts:
+            - name: spark-code
+              mountPath: /app
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+      volumes:
+        - name: spark-code
+          configMap:
+            name: spark-code
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-streaming
+  namespace: urban-sensors
+  labels:
+    app: spark-streaming
+spec:
+  selector:
+    app: spark-streaming
+  ports:
+    - port: 4040
+      targetPort: 4040
+      name: spark-ui
+  type: ClusterIP
