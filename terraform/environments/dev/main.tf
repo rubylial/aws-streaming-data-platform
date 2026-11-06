@@ -65,3 +65,27 @@ module "ingestion" {
     Component = "ingestion"
   }
 }
+
+
+# --------------------------------------------------------
+# Módulo Analytics (PE4)
+# --------------------------------------------------------
+# Managed Apache Flink — aplicación stateful con checkpoints.
+# BLOQUEADO_POR_COSTO: solo declarativo, NO ejecutar apply.
+# --------------------------------------------------------
+
+module "analytics" {
+  source = "../../modules/analytics"
+
+  project_name        = var.project_name
+  environment         = var.environment
+  aws_region          = var.aws_region
+  kinesis_stream_arn  = module.ingestion.kinesis_stream_arn
+  kinesis_stream_name = module.ingestion.kinesis_stream_name
+  flink_role_arn      = module.identity.flink_execution_role_arn
+  flink_role_name     = module.identity.flink_execution_role_name
+
+  tags = {
+    Component = "analytics"
+  }
+}
