@@ -1,0 +1,85 @@
+=== MODO LOCAL — generando 10 eventos ===
+=== Sin conexión a AWS, sin costo ===
+
+{
+  "event_id": "evt-d424af28604e",
+  "event_time": "2026-11-06T06:18:58Z",
+  "merchant_id": "merchant-005",
+  "amount": 178962.33,
+  "currency": "COP",
+  "status": "refunded"
+}
+{
+  "event_id": "evt-523152d53a82",
+  "event_time": "2026-11-06T06:18:58Z",
+  "merchant_id": "merchant-002",
+  "amount": 298001.96,
+  "currency": "COP",
+  "status": "refunded"
+}
+{
+  "event_id": "evt-f70926a4822e",
+  "event_time": "2026-11-06T06:18:59Z",
+  "merchant_id": "merchant-005",
+  "amount": 122747.83,
+  "currency": "COP",
+  "status": "pending"
+}
+{
+  "event_id": "evt-bb0a0a1a92ad",
+  "event_time": "2026-11-06T06:18:59Z",
+  "merchant_id": "merchant-001",
+  "amount": 23807.1,
+  "currency": "COP",
+  "status": "refunded"
+}
+{
+  "event_id": "evt-b2b2557757a1",
+  "event_time": "2026-11-06T06:19:00Z",
+  "merchant_id": "merchant-001",
+  "amount": 366279.74,
+  "currency": "COP",
+  "status": "failed"
+}
+{
+  "event_id": "evt-eec67584b712",
+  "event_time": "2026-11-06T06:19:00Z",
+  "merchant_id": "merchant-005",
+  "amount": 259904.93,
+  "currency": "COP",
+  "status": "completed"
+}
+{
+  "event_id": "evt-0e7e6f6be806",
+  "event_time": "2026-11-06T06:19:01Z",
+  "merchant_id": "merchant-004",
+  "amount": 479135.51,
+  "currency": "COP",
+  "status": "completed"
+}
+{
+  "event_id": "evt-86502636769c",
+  "event_time": "2026-11-06T06:19:01Z",
+  "merchant_id": "merchant-001",
+  "amount": 207935.64,
+  "currency": "COP",
+  "status": "failed"
+}
+{
+  "event_id": "evt-52ae8bda11c5",
+  "event_time": "2026-11-06T06:19:02Z",
+  "merchant_id": "merchant-003",
+  "amount": 426202.72,
+  "currency": "COP",
+  "status": "refunded"
+}
+{
+  "event_id": "evt-90c8f6df0f0c",
+  "event_time": "2026-11-06T06:19:02Z",
+  "merchant_id": "merchant-004",
+  "amount": 243477.29,
+  "currency": "COP",
+  "status": "pending"
+}
+
+=== 10 eventos generados (LOCAL) ===
