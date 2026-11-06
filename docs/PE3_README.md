@@ -159,18 +159,23 @@ kubectl get pods -n urban-sensors
 
 | Aspecto | Estado |
 |---|---|
-| Docker Compose local | ✅ Ejecutable |
+| Docker Compose local | ✅ Verificado — productor + Spark ejecutados |
 | Productor modo --local | ✅ Ejecutable sin Kafka |
-| Spark job (requiere Kafka) | ⚠️ Requiere Docker Compose |
+| Spark job con Kafka | ✅ Verificado — ventanas y promedios en consola |
 | Kubernetes en cluster real | `BLOQUEADO` — requiere Minikube/Kind |
-| K8s manifiestos válidos | `IMPLEMENTED_UNVERIFIED` |
+| K8s manifiestos válidos | `IMPLEMENTED_UNVERIFIED` — dry-run pendiente |
 
 ## Criterios de rúbrica PE3
 
 | Criterio | Peso | Estado |
 |---|---|---|
-| K8s Deployments/Services en /k8s/ | 30% | `IMPLEMENTED_UNVERIFIED` |
-| Kafka topic urban_sensors 3 part. + productor | 20% | `IMPLEMENTED_UNVERIFIED` |
-| Spark ventana 1 min avg temp y AQI por sensor | 25% | `IMPLEMENTED_UNVERIFIED` |
-| README, arquitectura, evidencias | 15% | `IMPLEMENTED_UNVERIFIED` |
-| Calidad repo, seguridad | 10% | `IMPLEMENTED_UNVERIFIED` |
+| K8s Deployments/Services en /k8s/ | 30% | `IMPLEMENTED_UNVERIFIED` — manifiestos + ConfigMaps presentes, dry-run pendiente |
+| Kafka topic urban_sensors 3 part. + productor | 20% | `LOCAL_VALIDATED` — topic 3 particiones + 200 eventos via Docker |
+| Spark ventana 1 min avg temp y AQI por sensor | 25% | `LOCAL_VALIDATED` — promedios por sensor en ventana 1 min verificados |
+| README, arquitectura, evidencias | 15% | `LOCAL_VALIDATED` — logs en docs/evidence/pe3/ |
+| Calidad repo, seguridad | 10% | `IMPLEMENTED_UNVERIFIED` — ConfigMaps, sin credenciales |
+
+## Imagen Spark
+
+La imagen original `bitnami/spark:3.5.1` fue descontinuada de Docker Hub.
+Se utiliza `apache/spark:3.5.3-python3` (imagen oficial Apache) como reemplazo.
