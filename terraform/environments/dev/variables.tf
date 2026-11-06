@@ -1,6 +1,6 @@
 # ============================================================
 # Variables — Environment Dev
-# =============================================================
+# ============================================================
 
 variable "project_name" {
   description = "Nombre del proyecto para naming y tagging"
@@ -61,4 +61,12 @@ variable "firehose_buffer_interval" {
   description = "Buffer interval de Firehose en segundos"
   type        = number
   default     = 60
+}
+
+# --- PE6: Redshift ---
+
+variable "redshift_admin_password" {
+  description = "Contraseña del usuario admin de Redshift Serverless"
+  type        = string
+  sensitive   = true
 }
