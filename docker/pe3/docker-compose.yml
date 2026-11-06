@@ -85,6 +85,7 @@ services:
   spark-streaming:
     image: apache/spark:3.5.3-python3
     container_name: pe3-spark
+    user: root
     depends_on:
       kafka-init:
         condition: service_completed_successfully
@@ -95,7 +96,8 @@ services:
     volumes:
       - ../../scripts/pe3:/app
     command:
-      - /opt/spark/bin/spark-submit
-      - --packages
-      - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3
-      - /app/spark_streaming_job.py
+      - bash
+      - -c
+      - |
+        mkdir -p /home/spark/.ivy2/cache /home/spark/.ivy2/jars
+        /opt/spark/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 /app/spark_streaming_job.py
