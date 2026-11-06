@@ -1,0 +1,73 @@
+# ============================================================
+# ConfigMap — Código del productor de sensores
+# PE3: monta producer_sensors.py en el pod del productor
+# ============================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: producer-code
+  namespace: urban-sensors
+  labels:
+    app: sensor-producer
+    app.kubernetes.io/part-of: pe3-kafka-spark
+data:
+  producer_sensors.py: |
+    #!/usr/bin/env python3
+    """Productor de sensores urbanos para Kafka (embebido en ConfigMap)."""
+    import argparse
+    import json
+    import sys
+    import time
+    from datetime import datetime, timezone
+    from random import choice, gauss, uniform
+
+    SENSORS = [
+        {"id": "sensor-norte-001", "base_temp": 22.0, "base_aqi": 45},
+        {"id": "sensor-centro-002", "base_temp": 24.0, "base_aqi": 72},
+        {"id": "sensor-sur-003", "base_temp": 21.0, "base_aqi": 55},
+        {"id": "sensor-oriente-004", "base_temp": 23.0, "base_aqi": 60},
+        {"id": "sensor-occidente-005", "base_temp": 20.0, "base_aqi": 38},
+    ]
+
+    def generate_sensor_event():
+        sensor = choice(SENSORS)
+        return {
+            "sensor_id": sensor["id"],
+            "temperature": round(gauss(sensor["base_temp"], 2.0), 2),
+            "humidity": round(uniform(40.0, 95.0), 2),
+            "air_quality_index": max(0, round(gauss(sensor["base_aqi"], 10.0), 1)),
+            "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        }
+
+    def main():
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--bootstrap-servers", required=True)
+        parser.add_argument("--topic", default="urban_sensors")
+        parser.add_argument("--interval", type=float, default=2.0)
+        parser.add_argument("--count", type=int, default=200)
+        args = parser.parse_args()
+
+        try:
+            from kafka import KafkaProducer
+        except ImportError:
+            print("kafka-python no instalado", file=sys.stderr)
+            sys.exit(1)
+
+        producer = KafkaProducer(
+            bootstrap_servers=args.bootstrap_servers,
+            value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+            key_serializer=lambda k: k.encode("utf-8") if k else None,
+        )
+
+        for i in range(args.count):
+            event = generate_sensor_event()
+            producer.send(args.topic, key=event["sensor_id"], value=event)
+            print(json.dumps(event))
+            if i < args.count - 1:
+                time.sleep(args.interval)
+
+        producer.flush()
+        producer.close()
+
+    if __name__ == "__main__":
+        main()
