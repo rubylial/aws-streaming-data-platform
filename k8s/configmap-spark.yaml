@@ -1,0 +1,74 @@
+# ============================================================
+# ConfigMap — Código del job Spark Structured Streaming
+# PE3: monta spark_streaming_job.py en el pod de Spark
+# ============================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spark-code
+  namespace: urban-sensors
+  labels:
+    app: spark-streaming
+    app.kubernetes.io/part-of: pe3-kafka-spark
+data:
+  spark_streaming_job.py: |
+    #!/usr/bin/env python3
+    """Spark Structured Streaming — ventana 1 min, avg por sensor."""
+    import os
+    from pyspark.sql import SparkSession
+    from pyspark.sql.functions import avg, col, from_json, round as spark_round, window
+    from pyspark.sql.types import DoubleType, StringType, StructField, StructType, TimestampType
+
+    BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:9092")
+    TOPIC = os.getenv("KAFKA_TOPIC", "urban_sensors")
+
+    SENSOR_SCHEMA = StructType([
+        StructField("sensor_id", StringType(), False),
+        StructField("temperature", DoubleType(), False),
+        StructField("humidity", DoubleType(), False),
+        StructField("air_quality_index", DoubleType(), False),
+        StructField("timestamp", StringType(), False),
+    ])
+
+    def main():
+        spark = (SparkSession.builder
+                 .appName("PE3-UrbanSensors-Streaming")
+                 .config("spark.sql.shuffle.partitions", "4")
+                 .config("spark.streaming.stopGracefullyOnShutdown", "true")
+                 .getOrCreate())
+        spark.sparkContext.setLogLevel("WARN")
+
+        raw = (spark.readStream.format("kafka")
+               .option("kafka.bootstrap.servers", BOOTSTRAP_SERVERS)
+               .option("subscribe", TOPIC)
+               .option("startingOffsets", "latest")
+               .option("failOnDataLoss", "false")
+               .load())
+
+        parsed = (raw.selectExpr("CAST(value AS STRING) as json_str")
+                  .select(from_json(col("json_str"), SENSOR_SCHEMA).alias("data"))
+                  .select(
+                      col("data.sensor_id"),
+                      col("data.temperature"),
+                      col("data.humidity"),
+                      col("data.air_quality_index"),
+                      col("data.timestamp").cast(TimestampType()).alias("event_time")))
+
+        windowed = (parsed
+                    .withWatermark("event_time", "30 seconds")
+                    .groupBy(window(col("event_time"), "1 minute"), col("sensor_id"))
+                    .agg(
+                        spark_round(avg("temperature"), 2).alias("avg_temperature"),
+                        spark_round(avg("air_quality_index"), 1).alias("avg_aqi"),
+                        spark_round(avg("humidity"), 1).alias("avg_humidity"))
+                    .select("window.start", "window.end", "sensor_id",
+                            "avg_temperature", "avg_aqi", "avg_humidity"))
+
+        query = (windowed.writeStream
+                 .outputMode("update").format("console")
+                 .option("truncate", "false").option("numRows", "50")
+                 .trigger(processingTime="30 seconds").start())
+        query.awaitTermination()
+
+    if __name__ == "__main__":
+        main()
