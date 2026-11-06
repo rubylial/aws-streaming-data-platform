@@ -102,11 +102,11 @@ module "analytics" {
 module "lakehouse" {
   source = "../../modules/lakehouse"
 
-  project_name   = var.project_name
-  environment    = var.environment
-  aws_region     = var.aws_region
-  kms_key_arn    = module.ingestion.kms_key_arn
-  glue_role_name = module.identity.glue_service_role_name
+  project_name    = var.project_name
+  environment     = var.environment
+  aws_region      = var.aws_region
+  kms_key_arn     = module.ingestion.kms_key_arn
+  glue_role_name  = module.identity.glue_service_role_name
   flink_role_name = module.identity.flink_execution_role_name
 
   tags = {
