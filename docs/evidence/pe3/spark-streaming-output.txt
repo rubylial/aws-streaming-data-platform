@@ -1,0 +1,271 @@
+time="2026-11-06T02:04:45-05:00" level=warning msg="/home/ruby/rubylial/aws-streaming-data-platform/docker/pe3/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container pe3-zookeeper  Running
+ Container pe3-kafka  Running
+ Container pe3-kafka-init  Created
+ Container pe3-spark  Creating
+ Container pe3-spark  Created
+Attaching to pe3-spark
+pe3-spark  | :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+pe3-spark  | Ivy Default Cache set to: /root/.ivy2/cache
+pe3-spark  | The jars for the packages stored in: /root/.ivy2/jars
+pe3-spark  | org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+pe3-spark  | :: resolving dependencies :: org.apache.spark#spark-submit-parent-859f769f-e08e-4d67-b3fe-f2e8d9c2994e;1.0
+pe3-spark  | 	confs: [default]
+pe3-spark  | 	found org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.3 in central
+pe3-spark  | 	found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.3 in central
+pe3-spark  | 	found org.apache.kafka#kafka-clients;3.4.1 in central
+pe3-spark  | 	found org.lz4#lz4-java;1.8.0 in central
+pe3-spark  | 	found org.xerial.snappy#snappy-java;1.1.10.5 in central
+pe3-spark  | 	found org.slf4j#slf4j-api;2.0.7 in central
+pe3-spark  | 	found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+pe3-spark  | 	found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+pe3-spark  | 	found commons-logging#commons-logging;1.1.3 in central
+pe3-spark  | 	found com.google.code.findbugs#jsr305;3.0.0 in central
+pe3-spark  | 	found org.apache.commons#commons-pool2;2.11.1 in central
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.3/spark-sql-kafka-0-10_2.12-3.5.3.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.3!spark-sql-kafka-0-10_2.12.jar (146ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.5.3/spark-token-provider-kafka-0-10_2.12-3.5.3.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.3!spark-token-provider-kafka-0-10_2.12.jar (60ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.4.1/kafka-clients-3.4.1.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.kafka#kafka-clients;3.4.1!kafka-clients.jar (197ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.0/jsr305-3.0.0.jar ...
+pe3-spark  | 	[SUCCESSFUL ] com.google.code.findbugs#jsr305;3.0.0!jsr305.jar (64ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.commons#commons-pool2;2.11.1!commons-pool2.jar (68ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-runtime/3.3.4/hadoop-client-runtime-3.3.4.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.hadoop#hadoop-client-runtime;3.3.4!hadoop-client-runtime.jar (664ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.lz4#lz4-java;1.8.0!lz4-java.jar (80ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.xerial.snappy#snappy-java;1.1.10.5!snappy-java.jar(bundle) (110ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.slf4j#slf4j-api;2.0.7!slf4j-api.jar (62ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-api/3.3.4/hadoop-client-api-3.3.4.jar ...
+pe3-spark  | 	[SUCCESSFUL ] org.apache.hadoop#hadoop-client-api;3.3.4!hadoop-client-api.jar (423ms)
+pe3-spark  | downloading https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar ...
+pe3-spark  | 	[SUCCESSFUL ] commons-logging#commons-logging;1.1.3!commons-logging.jar (70ms)
+pe3-spark  | :: resolution report :: resolve 6644ms :: artifacts dl 1952ms
+pe3-spark  | 	:: modules in use:
+pe3-spark  | 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+pe3-spark  | 	commons-logging#commons-logging;1.1.3 from central in [default]
+pe3-spark  | 	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+pe3-spark  | 	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+pe3-spark  | 	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+pe3-spark  | 	org.apache.kafka#kafka-clients;3.4.1 from central in [default]
+pe3-spark  | 	org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.3 from central in [default]
+pe3-spark  | 	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.3 from central in [default]
+pe3-spark  | 	org.lz4#lz4-java;1.8.0 from central in [default]
+pe3-spark  | 	org.slf4j#slf4j-api;2.0.7 from central in [default]
+pe3-spark  | 	org.xerial.snappy#snappy-java;1.1.10.5 from central in [default]
+pe3-spark  | 	---------------------------------------------------------------------
+pe3-spark  | 	|                  |            modules            ||   artifacts   |
+pe3-spark  | 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+pe3-spark  | 	---------------------------------------------------------------------
+pe3-spark  | 	|      default     |   11  |   11  |   11  |   0   ||   11  |   11  |
+pe3-spark  | 	---------------------------------------------------------------------
+pe3-spark  | :: retrieving :: org.apache.spark#spark-submit-parent-859f769f-e08e-4d67-b3fe-f2e8d9c2994e
+pe3-spark  | 	confs: [default]
+pe3-spark  | 	11 artifacts copied, 0 already retrieved (57002kB/90ms)
+pe3-spark  | 26/11/06 07:04:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Running Spark version 3.5.3
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Java version 11.0.24
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceUtils: ==============================================================
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceUtils: No custom resources configured for spark.driver.
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceUtils: ==============================================================
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Submitted application: PE3-UrbanSensors-Streaming
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceProfile: Limiting resource is cpu
+pe3-spark  | 26/11/06 07:05:00 INFO ResourceProfileManager: Added ResourceProfile id: 0
+pe3-spark  | 26/11/06 07:05:00 INFO SecurityManager: Changing view acls to: root
+pe3-spark  | 26/11/06 07:05:00 INFO SecurityManager: Changing modify acls to: root
+pe3-spark  | 26/11/06 07:05:00 INFO SecurityManager: Changing view acls groups to: 
+pe3-spark  | 26/11/06 07:05:00 INFO SecurityManager: Changing modify acls groups to: 
+pe3-spark  | 26/11/06 07:05:00 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Successfully started service 'sparkDriver' on port 42115.
+pe3-spark  | 26/11/06 07:05:00 INFO SparkEnv: Registering MapOutputTracker
+pe3-spark  | 26/11/06 07:05:00 INFO SparkEnv: Registering BlockManagerMaster
+pe3-spark  | 26/11/06 07:05:00 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+pe3-spark  | 26/11/06 07:05:00 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+pe3-spark  | 26/11/06 07:05:00 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+pe3-spark  | 26/11/06 07:05:00 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-f515c891-f7b3-4e09-8ae5-44f8aea4e139
+pe3-spark  | 26/11/06 07:05:00 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+pe3-spark  | 26/11/06 07:05:00 INFO SparkEnv: Registering OutputCommitCoordinator
+pe3-spark  | 26/11/06 07:05:00 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar at spark://590589113f88:42115/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar at spark://590589113f88:42115/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar at spark://590589113f88:42115/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar at spark://590589113f88:42115/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar at spark://590589113f88:42115/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar at spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar at spark://590589113f88:42115/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar at spark://590589113f88:42115/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar at spark://590589113f88:42115/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar at spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added JAR file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar at spark://590589113f88:42115/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar at file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar at file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar at file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.kafka_kafka-clients-3.4.1.jar
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar at file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/com.google.code.findbugs_jsr305-3.0.0.jar
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar at file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.commons_commons-pool2-2.11.1.jar
+pe3-spark  | 26/11/06 07:05:00 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar at file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:00 INFO Utils: Copying /root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar at file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Copying /root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.lz4_lz4-java-1.8.0.jar
+pe3-spark  | 26/11/06 07:05:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar at file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Copying /root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.xerial.snappy_snappy-java-1.1.10.5.jar
+pe3-spark  | 26/11/06 07:05:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar at file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Copying /root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.slf4j_slf4j-api-2.0.7.jar
+pe3-spark  | 26/11/06 07:05:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar at file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO SparkContext: Added file file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar at file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Copying /root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/commons-logging_commons-logging-1.1.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Starting executor ID driver on host 590589113f88
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Java version 11.0.24
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@4cbae933 for default.
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/com.google.code.findbugs_jsr305-3.0.0.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.slf4j_slf4j-api-2.0.7.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.xerial.snappy_snappy-java-1.1.10.5.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.commons_commons-pool2-2.11.1.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/commons-logging_commons-logging-1.1.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.lz4_lz4-java-1.8.0.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.kafka_kafka-clients-3.4.1.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO TransportClientFactory: Successfully created connection to 590589113f88/172.22.0.5:42115 after 22 ms (0 ms spent in bootstraps)
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/commons-logging_commons-logging-1.1.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp140791706285133319.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp140791706285133319.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/commons-logging_commons-logging-1.1.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/commons-logging_commons-logging-1.1.3.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.slf4j_slf4j-api-2.0.7.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp3090599033384063387.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp3090599033384063387.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.slf4j_slf4j-api-2.0.7.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.slf4j_slf4j-api-2.0.7.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.xerial.snappy_snappy-java-1.1.10.5.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp119395762995529987.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp119395762995529987.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.xerial.snappy_snappy-java-1.1.10.5.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.xerial.snappy_snappy-java-1.1.10.5.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp3074999436204645971.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp3074999436204645971.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.3.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.lz4_lz4-java-1.8.0.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp18004884331751450505.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp18004884331751450505.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.lz4_lz4-java-1.8.0.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.lz4_lz4-java-1.8.0.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15530293473023430816.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15530293473023430816.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-api-3.3.4.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.commons_commons-pool2-2.11.1.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp11877327751960349801.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp11877327751960349801.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.commons_commons-pool2-2.11.1.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.commons_commons-pool2-2.11.1.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/com.google.code.findbugs_jsr305-3.0.0.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15230450373585833782.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15230450373585833782.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/com.google.code.findbugs_jsr305-3.0.0.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/com.google.code.findbugs_jsr305-3.0.0.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp1205556900780406671.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp1205556900780406671.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.kafka_kafka-clients-3.4.1.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15544796435261347334.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp15544796435261347334.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.kafka_kafka-clients-3.4.1.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.kafka_kafka-clients-3.4.1.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Fetching spark://590589113f88:42115/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar with timestamp 1793948700376
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Fetching spark://590589113f88:42115/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp17920142114423935479.tmp
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/fetchFileTemp17920142114423935479.tmp has been previously copied to /tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar
+pe3-spark  | 26/11/06 07:05:01 INFO Executor: Adding file:/tmp/spark-793a63fa-049c-4996-8760-387bb57f2bae/userFiles-f529cf73-5176-4be3-b914-f7bb2f290a05/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.3.jar to class loader default
+pe3-spark  | 26/11/06 07:05:01 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 37317.
+pe3-spark  | 26/11/06 07:05:01 INFO NettyBlockTransferService: Server created on 590589113f88:37317
+pe3-spark  | 26/11/06 07:05:01 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+pe3-spark  | 26/11/06 07:05:01 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 590589113f88, 37317, None)
+pe3-spark  | 26/11/06 07:05:01 INFO BlockManagerMasterEndpoint: Registering block manager 590589113f88:37317 with 434.4 MiB RAM, BlockManagerId(driver, 590589113f88, 37317, None)
+pe3-spark  | 26/11/06 07:05:01 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 590589113f88, 37317, None)
+pe3-spark  | 26/11/06 07:05:01 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 590589113f88, 37317, None)
+pe3-spark  | === Spark Structured Streaming ===
+pe3-spark  | === Kafka: kafka:9092 ===
+pe3-spark  | === Topic: urban_sensors ===
+pe3-spark  | 
+pe3-spark  | 26/11/06 07:05:03 WARN ResolveWriteToStream: Temporary checkpoint location created which is deleted normally when the query didn't fail: /tmp/temporary-a317377e-2d7e-46d5-801f-34771e39370d. If it's required to delete it under any circumstances, please set spark.sql.streaming.forceDeleteTempCheckpointLocation to true. Important to know deleting temp checkpoint folder is best effort.
+pe3-spark  | 26/11/06 07:05:03 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+pe3-spark  | Streaming iniciado. Ctrl+C para detener.
+pe3-spark  | 
+pe3-spark  | 26/11/06 07:05:04 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+pe3-spark  | -------------------------------------------
+pe3-spark  | Batch: 0
+pe3-spark  | -------------------------------------------
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | |window_start|window_end|sensor_id|avg_temperature|avg_aqi|avg_humidity|
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | 
+pe3-spark  | -------------------------------------------
+pe3-spark  | Batch: 1
+pe3-spark  | -------------------------------------------
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |window_start       |window_end         |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-oriente-004  |23.13          |61.2   |68.3        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-sur-003      |20.74          |52.4   |65.2        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-norte-001    |21.1           |42.4   |67.6        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-centro-002   |23.95          |68.2   |80.4        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-occidente-005|19.13          |42.3   |65.8        |
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | 
+pe3-spark  | -------------------------------------------
+pe3-spark  | Batch: 2
+pe3-spark  | -------------------------------------------
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |window_start       |window_end         |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-oriente-004  |23.02          |56.2   |68.0        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-norte-001    |22.27          |41.1   |66.7        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-sur-003      |21.33          |53.0   |69.4        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-centro-002   |24.31          |72.0   |66.6        |
+pe3-spark  | |2026-11-06 07:05:00|2026-11-06 07:06:00|sensor-occidente-005|19.79          |42.5   |66.2        |
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | 
+pe3-spark  | -------------------------------------------
+pe3-spark  | Batch: 3
+pe3-spark  | -------------------------------------------
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |window_start       |window_end         |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | |2026-11-06 07:06:00|2026-11-06 07:07:00|sensor-oriente-004  |22.69          |63.0   |61.4        |
+pe3-spark  | |2026-11-06 07:06:00|2026-11-06 07:07:00|sensor-occidente-005|20.22          |40.2   |76.7        |
+pe3-spark  | |2026-11-06 07:06:00|2026-11-06 07:07:00|sensor-centro-002   |24.64          |70.8   |76.7        |
+pe3-spark  | |2026-11-06 07:06:00|2026-11-06 07:07:00|sensor-sur-003      |20.83          |52.2   |62.7        |
+pe3-spark  | |2026-11-06 07:06:00|2026-11-06 07:07:00|sensor-norte-001    |21.65          |47.1   |60.8        |
+pe3-spark  | +-------------------+-------------------+--------------------+---------------+-------+------------+
+pe3-spark  | 
+pe3-spark  | -------------------------------------------
+pe3-spark  | Batch: 4
+pe3-spark  | -------------------------------------------
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | |window_start|window_end|sensor_id|avg_temperature|avg_aqi|avg_humidity|
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | +------------+----------+---------+---------------+-------+------------+
+pe3-spark  | 

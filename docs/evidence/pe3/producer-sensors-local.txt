@@ -1,0 +1,110 @@
+=== MODO LOCAL — sensores urbanos ===
+=== Generando 15 eventos ===
+
+{
+  "sensor_id": "sensor-sur-003",
+  "temperature": 22.11,
+  "humidity": 90.77,
+  "air_quality_index": 66.0,
+  "timestamp": "2026-11-06T06:37:10Z"
+}
+{
+  "sensor_id": "sensor-centro-002",
+  "temperature": 24.49,
+  "humidity": 70.65,
+  "air_quality_index": 88.4,
+  "timestamp": "2026-11-06T06:37:11Z"
+}
+{
+  "sensor_id": "sensor-centro-002",
+  "temperature": 24.34,
+  "humidity": 83.48,
+  "air_quality_index": 70.9,
+  "timestamp": "2026-11-06T06:37:12Z"
+}
+{
+  "sensor_id": "sensor-occidente-005",
+  "temperature": 19.78,
+  "humidity": 47.12,
+  "air_quality_index": 49.5,
+  "timestamp": "2026-11-06T06:37:13Z"
+}
+{
+  "sensor_id": "sensor-centro-002",
+  "temperature": 27.63,
+  "humidity": 64.46,
+  "air_quality_index": 64.3,
+  "timestamp": "2026-11-06T06:37:14Z"
+}
+{
+  "sensor_id": "sensor-norte-001",
+  "temperature": 19.31,
+  "humidity": 40.73,
+  "air_quality_index": 50.4,
+  "timestamp": "2026-11-06T06:37:15Z"
+}
+{
+  "sensor_id": "sensor-oriente-004",
+  "temperature": 23.75,
+  "humidity": 59.48,
+  "air_quality_index": 60.2,
+  "timestamp": "2026-11-06T06:37:16Z"
+}
+{
+  "sensor_id": "sensor-norte-001",
+  "temperature": 19.99,
+  "humidity": 88.87,
+  "air_quality_index": 49.7,
+  "timestamp": "2026-11-06T06:37:17Z"
+}
+{
+  "sensor_id": "sensor-sur-003",
+  "temperature": 24.09,
+  "humidity": 74.68,
+  "air_quality_index": 41.4,
+  "timestamp": "2026-11-06T06:37:18Z"
+}
+{
+  "sensor_id": "sensor-centro-002",
+  "temperature": 26.14,
+  "humidity": 50.18,
+  "air_quality_index": 53.8,
+  "timestamp": "2026-11-06T06:37:19Z"
+}
+{
+  "sensor_id": "sensor-norte-001",
+  "temperature": 24.93,
+  "humidity": 54.41,
+  "air_quality_index": 63.5,
+  "timestamp": "2026-11-06T06:37:20Z"
+}
+{
+  "sensor_id": "sensor-sur-003",
+  "temperature": 23.38,
+  "humidity": 92.83,
+  "air_quality_index": 60.9,
+  "timestamp": "2026-11-06T06:37:22Z"
+}
+{
+  "sensor_id": "sensor-oriente-004",
+  "temperature": 22.01,
+  "humidity": 44.91,
+  "air_quality_index": 68.3,
+  "timestamp": "2026-11-06T06:37:23Z"
+}
+{
+  "sensor_id": "sensor-oriente-004",
+  "temperature": 24.64,
+  "humidity": 71.48,
+  "air_quality_index": 54.3,
+  "timestamp": "2026-11-06T06:37:24Z"
+}
+{
+  "sensor_id": "sensor-norte-001",
+  "temperature": 20.48,
+  "humidity": 47.2,
+  "air_quality_index": 49.2,
+  "timestamp": "2026-11-06T06:37:25Z"
+}
+
+=== 15 eventos generados (LOCAL) ===

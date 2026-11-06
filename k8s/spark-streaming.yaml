@@ -34,11 +34,11 @@ spec:
               echo "Kafka disponible"
       containers:
         - name: spark
-          image: bitnami/spark:3.5.1
+          image: apache/spark:3.5.3-python3
           command:
-            - spark-submit
+            - /opt/spark/bin/spark-submit
             - --packages
-            - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1
+            - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3
             - /app/spark_streaming_job.py
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
