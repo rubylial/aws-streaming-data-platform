@@ -85,7 +85,7 @@ public class TransactionAnomalyDetector
         runningSum.update(currentSum + event.getAmount());
         runningCount.update(currentCount + 1);
 
-        LOG.debug("State updated | merchant={} | count={} | sum={:.2f}",
+        LOG.debug("State updated | merchant={} | count={} | sum={}",
                 event.getMerchantId(), currentCount + 1, currentSum + event.getAmount());
     }
 }
