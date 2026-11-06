@@ -74,9 +74,12 @@ public class StreamingJob {
                 .<TransactionEvent>builder()
                 .setStreamArn("arn:aws:kinesis:" + region + ":000000000000:stream/" + streamName)
                 .setDeserializationSchema(new TransactionDeserializer())
-                .setKinesisShardAssigner(
-                    (shard, numShards) -> shard.hashCode() % numShards
-                )
+                // Shard assigner: se usa el default UniformShardAssigner
+                // que distribuye shards equitativamente entre subtasks
+                // basándose en hash-key ranges (FLIP-27).
+                // La lambda anterior (shard, numShards) -> shard.hashCode() % numShards
+                // causaba error de tipos: la interfaz KinesisShardAssigner en 4.x
+                // usa (KinesisShardSplit, Context), no (Object, int).
                 .build();
 
         // --- Watermark Strategy: Event Time con 5s de tolerancia ---
