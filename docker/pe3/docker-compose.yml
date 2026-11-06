@@ -57,18 +57,14 @@ services:
     depends_on:
       kafka:
         condition: service_healthy
-    command: >
-      bash -c "
+    command:
+      - bash
+      - -c
+      - |
         echo 'Creando topic urban_sensors con 3 particiones...'
-        kafka-topics --bootstrap-server kafka:9092 \
-          --create --if-not-exists \
-          --topic urban_sensors \
-          --partitions 3 \
-          --replication-factor 1
+        kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic urban_sensors --partitions 3 --replication-factor 1
         echo 'Topic creado:'
-        kafka-topics --bootstrap-server kafka:9092 \
-          --describe --topic urban_sensors
-      "
+        kafka-topics --bootstrap-server kafka:9092 --describe --topic urban_sensors
 
   producer:
     image: python:3.11-slim
@@ -79,15 +75,12 @@ services:
     working_dir: /app
     volumes:
       - ../../scripts/pe3:/app
-    command: >
-      bash -c "
+    command:
+      - bash
+      - -c
+      - |
         pip install -q kafka-python>=2.0.2 &&
-        python producer_sensors.py \
-          --bootstrap-servers kafka:9092 \
-          --topic urban_sensors \
-          --count 200 \
-          --interval 0.5
-      "
+        python producer_sensors.py --bootstrap-servers kafka:9092 --topic urban_sensors --count 200 --interval 0.5
 
   spark-streaming:
     image: bitnami/spark:3.5.1
@@ -101,7 +94,8 @@ services:
       OUTPUT_MODE: console
     volumes:
       - ../../scripts/pe3:/app
-    command: >
-      spark-submit
-        --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1
-        /app/spark_streaming_job.py
+    command:
+      - spark-submit
+      - --packages
+      - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1
+      - /app/spark_streaming_job.py
