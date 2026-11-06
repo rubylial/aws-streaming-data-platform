@@ -83,7 +83,7 @@ services:
         python producer_sensors.py --bootstrap-servers kafka:9092 --topic urban_sensors --count 200 --interval 0.5
 
   spark-streaming:
-    image: bitnami/spark:3.5.1
+    image: apache/spark:3.5.3-python3
     container_name: pe3-spark
     depends_on:
       kafka-init:
@@ -95,7 +95,7 @@ services:
     volumes:
       - ../../scripts/pe3:/app
     command:
-      - spark-submit
+      - /opt/spark/bin/spark-submit
       - --packages
-      - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1
+      - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3
       - /app/spark_streaming_job.py
