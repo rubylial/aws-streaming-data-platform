@@ -114,6 +114,16 @@ public class StreamingJob {
 
         slidingResults.print().name("sliding-output");
 
+        // --- Detección de anomalías con KeyedState (ValueState) ---
+        // Usa ValueState<Double> y ValueState<Long> para mantener
+        // promedio histórico por merchant. Se incluye en checkpoints.
+        DataStream<String> anomalies = events
+                .keyBy(TransactionEvent::getMerchantId)
+                .flatMap(new TransactionAnomalyDetector())
+                .name("anomaly-detection-keyed-state");
+
+        anomalies.print().name("anomaly-output");
+
         env.execute("PE4-TransactionStreaming");
     }
 
