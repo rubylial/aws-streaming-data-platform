@@ -68,6 +68,9 @@ terraform/modules/analytics/
   main.tf                                           # Managed Flink + IAM + S3
   variables.tf                                      # Variables del módulo
   outputs.tf                                        # Outputs del módulo
+docs/evidence/pe4/
+  minicluster-test-output.txt                       # Salida completa del test MiniCluster
+  build-success.txt                                 # Salida de compilación exitosa
 ```
 
 ## Compilación local
@@ -91,8 +94,6 @@ El test ejecuta el pipeline completo en un Flink MiniCluster local:
 - Checkpoints habilitados cada 5 segundos
 - Paralelismo 2
 - Ventana Tumbling + Sliding + detección de anomalías con KeyedState
-
-**Evidencia**: capturar la salida con los `[TUMBLING]`, `[SLIDING]` y `[ANOMALY]` results.
 
 ## Tests unitarios
 
@@ -214,14 +215,63 @@ parallelism_configuration {
 | Content type incorrecto | `analytics/main.tf` | Cambiado `"ZIPFILE"` → `"JAR"` |
 | Módulo no instanciado | `dev/main.tf` | Agregado bloque `module "analytics"` con variables de ingestion e identity |
 
+## Evidencias de ejecución local
+
+Todas las evidencias se encuentran en `docs/evidence/pe4/`:
+
+| Archivo | Contenido | Comando que lo generó |
+|---|---|---|
+| `minicluster-test-output.txt` | Salida completa del test MiniCluster con resultados de ventanas y anomalías | `mvn test -Dtest=StreamingJobLocalTest 2>&1 \| tee docs/evidence/pe4/minicluster-test-output.txt` |
+| `build-success.txt` | Compilación exitosa del JAR (fat JAR con shade plugin) | `mvn clean package -DskipTests 2>&1 \| tee docs/evidence/pe4/build-success.txt` |
+
+### Resultados observados (MiniCluster local)
+
+**Ventana Tumbling (1 min)** — 7 agregaciones generadas:
+
+```
+[TUMBLING] MerchantAgg{merchant=merchant-001, window=[10:00:00Z -> 10:01:00Z], count=4, total=485.50, avg=121.38}
+[TUMBLING] MerchantAgg{merchant=merchant-002, window=[10:00:00Z -> 10:01:00Z], count=2, total=620.00, avg=310.00}
+[TUMBLING] MerchantAgg{merchant=merchant-003, window=[10:01:00Z -> 10:02:00Z], count=2, total=1700.00, avg=850.00}
+[TUMBLING] MerchantAgg{merchant=merchant-001, window=[10:01:00Z -> 10:02:00Z], count=2, total=350.00, avg=175.00}
+[TUMBLING] MerchantAgg{merchant=merchant-002, window=[10:01:00Z -> 10:02:00Z], count=1, total=800.00, avg=800.00}
+[TUMBLING] MerchantAgg{merchant=merchant-001, window=[10:02:00Z -> 10:03:00Z], count=1, total=175.00, avg=175.00}
+[TUMBLING] MerchantAgg{merchant=merchant-002, window=[10:02:00Z -> 10:03:00Z], count=1, total=90.00, avg=90.00}
+```
+
+**Ventana Sliding (5 min / 1 min)** — 20+ agregaciones deslizantes generadas. Ejemplo:
+
+```
+[SLIDING]  MerchantAgg{merchant=merchant-001, window=[09:56:00Z -> 10:01:00Z], count=4, total=485.50, avg=121.38}
+[SLIDING]  MerchantAgg{merchant=merchant-001, window=[09:57:00Z -> 10:02:00Z], count=6, total=835.50, avg=139.25}
+[SLIDING]  MerchantAgg{merchant=merchant-001, window=[09:58:00Z -> 10:03:00Z], count=7, total=1010.50, avg=144.36}
+```
+
+**Detección de anomalías (KeyedState)** — 1 alerta generada:
+
+```
+[ANOMALY]  ANOMALY DETECTED | merchant=merchant-001 | event_id=evt-006 | amount=300.00 | avg=141.83 | threshold=283.67 | ratio=2.12x
+```
+
+- El evento `evt-006` ($300.00) superó el umbral de 2x el promedio histórico ($141.83) del merchant-001
+- El detector necesitó 3 eventos previos antes de evaluar (MIN_EVENTS_FOR_DETECTION = 3)
+
+**Estado del test**: `Tests run: 1, Failures: 0, Errors: 0, Skipped: 0` — **BUILD SUCCESS**
+
+### Código fuente del test y detector
+
+| Archivo | Clase | Propósito |
+|---|---|---|
+| `src/test/java/.../StreamingJobLocalTest.java` | `StreamingJobLocalTest` | Test MiniCluster con 14 eventos sintéticos, 3 merchants, 3 minutos de Event Time, late event, checkpoints 5s |
+| `src/main/java/.../TransactionAnomalyDetector.java` | `TransactionAnomalyDetector` | `RichFlatMapFunction` con `ValueState<Double>` + `ValueState<Long>` para detección de anomalías por merchant |
+
 ## Limitaciones académicas
 
 | Aspecto | Estado | Nota |
 |---|---|---|
 | Compilación del JAR | ✅ `LOCAL_VALIDATED` | `mvn clean package` exitoso |
 | Tests unitarios (POJO/deserializer) | ✅ `LOCAL_VALIDATED` | 7 tests pasan |
-| Test MiniCluster (pipeline completo) | ⏳ `PENDIENTE` | Ejecutar `mvn test -Dtest=StreamingJobLocalTest` |
-| KeyedState (ValueState) | ✅ `IMPLEMENTED_UNVERIFIED` | `TransactionAnomalyDetector` con 2 ValueState |
+| Test MiniCluster (pipeline completo) | ✅ `LOCAL_VALIDATED` | Tumbling + Sliding + KeyedState anomalías verificados |
+| KeyedState (ValueState) | ✅ `LOCAL_VALIDATED` | `TransactionAnomalyDetector` con 2 ValueState — anomalía detectada correctamente |
 | Terraform validate | ⏳ `PENDIENTE` | Requiere providers instalados |
 | Despliegue Managed Flink | ❌ `BLOQUEADO_POR_COSTO` | 2 KPUs ≈ $0.22/hr |
 | Checkpoints en ejecución real | ❌ `BLOQUEADO_POR_COSTO` | Solo verificable en Managed Flink |
@@ -232,8 +282,8 @@ parallelism_configuration {
 
 | Criterio | Peso | Estado | Evidencia |
 |---|---|---|---|
-| Consumo Kinesis + Event Time + Watermarks + Ventanas + State | 35% | `IMPLEMENTED_UNVERIFIED` | Código + test MiniCluster + KeyedState |
-| Checkpoints, fallos, recuperación | 30% | `IMPLEMENTED_UNVERIFIED` | Config en código + Terraform |
+| Consumo Kinesis + Event Time + Watermarks + Ventanas + State | 35% | `LOCAL_VALIDATED` | Código + test MiniCluster + KeyedState con evidencia |
+| Checkpoints, fallos, recuperación | 30% | `IMPLEMENTED_UNVERIFIED` | Config en código + Terraform (verificación real requiere Managed Flink) |
 | `aws_kinesisanalyticsv2_application` + IAM | 15% | `IMPLEMENTED_UNVERIFIED` | HCL válido + módulo cableado |
-| README y documentación | 10% | `LOCAL_VALIDATED` | Este documento |
+| README y documentación | 10% | ✅ `LOCAL_VALIDATED` | Este documento con evidencias |
 | Evidencias reales | 10% | `BLOQUEADO_POR_COSTO` | Solo con despliegue AWS |
