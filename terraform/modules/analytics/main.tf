@@ -147,7 +147,7 @@ resource "aws_kinesisanalyticsv2_application" "flink_app" {
           file_key   = "flink-streaming-job-1.0.0.jar"
         }
       }
-      code_content_type = "ZIPFILE"
+      code_content_type = "JAR"
     }
 
     environment_properties {
