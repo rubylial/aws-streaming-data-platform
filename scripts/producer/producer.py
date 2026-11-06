@@ -24,6 +24,11 @@ import uuid
 from datetime import datetime, timezone
 from random import choice, uniform
 
+try:
+    import boto3
+except ImportError:
+    boto3 = None
+
 
 # --- Constantes del contrato de datos ---
 
@@ -60,9 +65,7 @@ def send_to_kinesis(stream_name: str, events: list[dict], region: str) -> dict:
     Returns:
         Respuesta de PutRecords con FailedRecordCount.
     """
-    try:
-        import boto3
-    except ImportError:
+    if boto3 is None:
         print("ERROR: boto3 no instalado. Ejecuta: pip install boto3", file=sys.stderr)
         sys.exit(1)
 

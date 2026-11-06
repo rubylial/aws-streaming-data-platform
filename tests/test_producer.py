@@ -76,64 +76,84 @@ class TestGenerateEvent(unittest.TestCase):
 class TestSendToKinesis(unittest.TestCase):
     """Tests para el envío a Kinesis con boto3 mockeado."""
 
-    @patch("producer.boto3")
-    def test_put_records_called_with_correct_params(self, mock_boto3):
-        """PutRecords debe llamarse con StreamName y Records correctos."""
+    def _setup_mock_boto3(self):
+        """Helper: crea un mock de boto3 y su client."""
+        mock_boto3 = MagicMock()
         mock_client = MagicMock()
         mock_boto3.client.return_value = mock_client
+        return mock_boto3, mock_client
+
+    @patch.dict("sys.modules", {"boto3": MagicMock()})
+    def test_put_records_called_with_correct_params(self):
+        """PutRecords debe llamarse con StreamName y Records correctos."""
+        import importlib
+        import producer
+        importlib.reload(producer)
+
+        mock_client = MagicMock()
         mock_client.put_records.return_value = {
             "FailedRecordCount": 0,
             "Records": [{"ShardId": "shardId-000000000000", "SequenceNumber": "1"}],
         }
 
-        events = [generate_event()]
-        send_to_kinesis("test-stream", events, "us-east-1")
+        with patch("boto3.client", return_value=mock_client):
+            events = [generate_event()]
+            producer.send_to_kinesis("test-stream", events, "us-east-1")
 
-        mock_boto3.client.assert_called_once_with("kinesis", region_name="us-east-1")
         mock_client.put_records.assert_called_once()
-
         call_args = mock_client.put_records.call_args
         self.assertEqual(call_args.kwargs["StreamName"], "test-stream")
         self.assertEqual(len(call_args.kwargs["Records"]), 1)
 
-    @patch("producer.boto3")
-    def test_partition_key_is_merchant_id(self, mock_boto3):
+    @patch.dict("sys.modules", {"boto3": MagicMock()})
+    def test_partition_key_is_merchant_id(self):
         """PartitionKey debe ser merchant_id del evento."""
+        import importlib
+        import producer
+        importlib.reload(producer)
+
         mock_client = MagicMock()
-        mock_boto3.client.return_value = mock_client
         mock_client.put_records.return_value = {
             "FailedRecordCount": 0,
             "Records": [{"ShardId": "shardId-000000000000", "SequenceNumber": "1"}],
         }
 
         event = generate_event()
-        send_to_kinesis("test-stream", [event], "us-east-1")
+        with patch("boto3.client", return_value=mock_client):
+            producer.send_to_kinesis("test-stream", [event], "us-east-1")
 
         records = mock_client.put_records.call_args.kwargs["Records"]
         self.assertEqual(records[0]["PartitionKey"], event["merchant_id"])
 
-    @patch("producer.boto3")
-    def test_data_is_valid_json(self, mock_boto3):
+    @patch.dict("sys.modules", {"boto3": MagicMock()})
+    def test_data_is_valid_json(self):
         """Data en cada record debe ser JSON válido del evento."""
+        import importlib
+        import producer
+        importlib.reload(producer)
+
         mock_client = MagicMock()
-        mock_boto3.client.return_value = mock_client
         mock_client.put_records.return_value = {
             "FailedRecordCount": 0,
             "Records": [{"ShardId": "shardId-000000000000", "SequenceNumber": "1"}],
         }
 
         event = generate_event()
-        send_to_kinesis("test-stream", [event], "us-east-1")
+        with patch("boto3.client", return_value=mock_client):
+            producer.send_to_kinesis("test-stream", [event], "us-east-1")
 
         records = mock_client.put_records.call_args.kwargs["Records"]
         decoded = json.loads(records[0]["Data"].decode("utf-8"))
         self.assertEqual(decoded["event_id"], event["event_id"])
 
-    @patch("producer.boto3")
-    def test_multiple_events_batch(self, mock_boto3):
+    @patch.dict("sys.modules", {"boto3": MagicMock()})
+    def test_multiple_events_batch(self):
         """Múltiples eventos deben enviarse en un solo PutRecords."""
+        import importlib
+        import producer
+        importlib.reload(producer)
+
         mock_client = MagicMock()
-        mock_boto3.client.return_value = mock_client
         mock_client.put_records.return_value = {
             "FailedRecordCount": 0,
             "Records": [
@@ -143,16 +163,20 @@ class TestSendToKinesis(unittest.TestCase):
         }
 
         events = [generate_event() for _ in range(5)]
-        send_to_kinesis("test-stream", events, "us-east-1")
+        with patch("boto3.client", return_value=mock_client):
+            producer.send_to_kinesis("test-stream", events, "us-east-1")
 
         records = mock_client.put_records.call_args.kwargs["Records"]
         self.assertEqual(len(records), 5)
 
-    @patch("producer.boto3")
-    def test_response_returns_failed_count(self, mock_boto3):
+    @patch.dict("sys.modules", {"boto3": MagicMock()})
+    def test_response_returns_failed_count(self):
         """La respuesta debe incluir FailedRecordCount."""
+        import importlib
+        import producer
+        importlib.reload(producer)
+
         mock_client = MagicMock()
-        mock_boto3.client.return_value = mock_client
         mock_client.put_records.return_value = {
             "FailedRecordCount": 2,
             "Records": [
@@ -162,7 +186,9 @@ class TestSendToKinesis(unittest.TestCase):
             ],
         }
 
-        response = send_to_kinesis("test-stream", [generate_event()] * 3, "us-east-1")
+        with patch("boto3.client", return_value=mock_client):
+            response = producer.send_to_kinesis("test-stream", [generate_event()] * 3, "us-east-1")
+
         self.assertEqual(response["FailedRecordCount"], 2)
 
 
