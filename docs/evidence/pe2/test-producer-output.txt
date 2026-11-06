@@ -21,4 +21,4 @@ tests/test_producer.py::TestSendToKinesis::test_put_records_called_with_correct_
 tests/test_producer.py::TestSendToKinesis::test_response_returns_failed_count PASSED [ 93%]
 tests/test_producer.py::TestDuplicateDetection::test_sample_events_contain_duplicate PASSED [100%]
 
-============================== 15 passed in 0.04s ==============================
+============================== 15 passed in 0.19s ==============================
