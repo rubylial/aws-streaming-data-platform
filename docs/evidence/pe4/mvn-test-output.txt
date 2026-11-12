@@ -1,0 +1,458 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.streaming:flink-streaming-job[0;1m >------------------[m
+[[1;34mINFO[m] [1mBuilding PE4 — Flink Stateful Streaming Job 1.0.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/ruby/rubylial/aws-streaming-data-platform/flink-app/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :source
+[[1;34mINFO[m] Compiling 6 source files with javac [debug target 11] to target/classes
+[[1;34mINFO[m] /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/main/java/com/streaming/flink/StreamingJob.java: /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/main/java/com/streaming/flink/StreamingJob.java uses or overrides a deprecated API.
+[[1;34mINFO[m] /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/main/java/com/streaming/flink/StreamingJob.java: Recompile with -Xlint:deprecation for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :dependency
+[[1;34mINFO[m] Compiling 2 source files with javac [debug target 11] to target/test-classes
+[[1;34mINFO[m] /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/test/java/com/streaming/flink/StreamingJobLocalTest.java: /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/test/java/com/streaming/flink/StreamingJobLocalTest.java uses or overrides a deprecated API.
+[[1;34mINFO[m] /home/ruby/rubylial/aws-streaming-data-platform/flink-app/src/test/java/com/streaming/flink/StreamingJobLocalTest.java: Recompile with -Xlint:deprecation for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mflink-streaming-job[0;1m ---[m
+[[1;34mINFO[m] Surefire report directory: /home/ruby/rubylial/aws-streaming-data-platform/flink-app/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.streaming.flink.StreamingJobLocalTest
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.cpu.cores required for local execution is not set, setting it to the maximal possible value.
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.heap.size required for local execution is not set, setting it to the maximal possible value.
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.off-heap.size required for local execution is not set, setting it to the maximal possible value.
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.min required for local execution is not set, setting it to its default value 64 mb.
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.max required for local execution is not set, setting it to its default value 64 mb.
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Starting Flink Mini Cluster
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Starting Metrics Registry
+[main] INFO org.apache.flink.runtime.metrics.MetricRegistryImpl - No metrics reporter configured, no metrics will be exposed/reported.
+[main] INFO org.apache.flink.runtime.metrics.MetricRegistryImpl - No trace reporter configured, no metrics will be exposed/reported.
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Starting RPC Service(s)
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils - Trying to start local actor system
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.pekko.event.slf4j.Slf4jLogger - Slf4jLogger started
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils - Actor system started at pekko://flink
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils - Trying to start local actor system
+[flink-metrics-6] INFO org.apache.pekko.event.slf4j.Slf4jLogger - Slf4jLogger started
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils - Actor system started at pekko://flink-metrics
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at pekko://flink-metrics/user/rpc/MetricQueryService .
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Loading delegation token providers
+[main] INFO org.apache.flink.runtime.security.token.hadoop.HadoopFSDelegationTokenProvider - Hadoop FS is not available (not packaged with this application): NoClassDefFoundError : "org/apache/hadoop/conf/Configuration".
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation token provider hadoopfs loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation token provider hbase loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation token provider test loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation token provider throw loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation token providers loaded successfully
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Loading delegation token receivers
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver hadoopfs loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver hbase loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver test loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver throw loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receivers loaded successfully
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Checking provider and receiver instances consistency
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Provider and receiver instances are consistent
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Obtaining delegation tokens
+[main] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Delegation tokens obtained successfully
+[main] WARN org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - No tokens obtained so skipping notifications
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Loading delegation token receivers
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver hadoopfs loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver hbase loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver test loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receiver throw loaded and initialized
+[main] INFO org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository - Delegation token receivers loaded successfully
+[main] INFO org.apache.flink.runtime.blob.BlobServer - Created BLOB server storage directory /tmp/junit11499039501458545740/junit4942065797784376206/minicluster_ed74d26b1efb782544ef079ac66cfa44/blobStorage
+[main] INFO org.apache.flink.runtime.blob.BlobServer - Started BLOB server at 0.0.0.0:42329 - max concurrent requests: 50 - max backlog: 1000
+[main] INFO org.apache.flink.runtime.blob.PermanentBlobCache - Created BLOB cache storage directory /tmp/junit11499039501458545740/junit4942065797784376206/minicluster_ed74d26b1efb782544ef079ac66cfa44/blobStorage
+[main] INFO org.apache.flink.runtime.blob.TransientBlobCache - Created BLOB cache storage directory /tmp/junit11499039501458545740/junit4942065797784376206/minicluster_ed74d26b1efb782544ef079ac66cfa44/blobStorage
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Starting 1 TaskManager(s)
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskManagerRunner - Starting TaskManager with ResourceID: 8b156670-cd04-415d-a8e3-9d46a167c65e
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskManagerServices - Temporary file directory '/tmp/junit11499039501458545740/junit4942065797784376206': total 1006 GB, usable 889 GB (88.37% usable)
+[main] INFO org.apache.flink.runtime.io.disk.iomanager.IOManager - Created a new FileChannelManager for spilling of task related data to disk (joins, sorting, ...). Used directories:
+	/tmp/junit11499039501458545740/junit4942065797784376206/flink-io-aaa66afd-61da-4256-a639-4618e3b7c94a
+[main] INFO org.apache.flink.runtime.io.network.NettyShuffleServiceFactory - Created a new FileChannelManager for storing result partitions of BLOCKING shuffles. Used directories:
+	/tmp/junit11499039501458545740/junit4942065797784376206/flink-netty-shuffle-b1baeaaf-b5ce-4a58-b9bd-8b725b3cd157
+[main] INFO org.apache.flink.runtime.io.network.buffer.NetworkBufferPool - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+[main] INFO org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Starting the network environment and its components.
+[main] INFO org.apache.flink.runtime.taskexecutor.TaskManagerServices - TaskManager data connection initialized successfully; listening internally on port: -1
+[main] INFO org.apache.flink.runtime.taskexecutor.KvStateService - Starting the kvState service and its components.
+[main] INFO org.apache.flink.configuration.Configuration - Config uses fallback configuration key 'pekko.ask.timeout' instead of key 'taskmanager.slot.timeout'
+[main] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at pekko://flink/user/rpc/taskmanager_0 .
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Start job leader service.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.filecache.FileCache - User file cache uses directory /tmp/junit11499039501458545740/junit4942065797784376206/flink-dist-cache-2ba9bb99-0af7-471e-8a1f-2c2f86d8af3a
+[main] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Starting rest endpoint.
+[main] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+[main] WARN org.apache.flink.runtime.webmonitor.WebMonitorUtils - Log file environment variable 'log.file' is not set.
+[main] WARN org.apache.flink.runtime.webmonitor.WebMonitorUtils - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'web.log.path'.
+[main] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Rest endpoint listening at localhost:37461
+[main] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to the contender that is registered under component ID 'rest_server'.
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - http://localhost:37461 was granted leadership with leaderSessionID=bf0f1b5d-e69c-43ed-ada9-f69c4839d6ad
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader http://localhost:37461 , session=bf0f1b5d-e69c-43ed-ada9-f69c4839d6ad
+[main] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to the contender that is registered under component ID 'dispatcher'.
+[main] INFO org.apache.flink.runtime.resourcemanager.ResourceManagerServiceImpl - Starting resource manager service.
+[main] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to the contender that is registered under component ID 'resource_manager'.
+[mini-cluster-io-thread-2] INFO org.apache.flink.runtime.dispatcher.runner.DefaultDispatcherRunner - DefaultDispatcherRunner was granted leadership with leader id 88b55870-243e-44ed-84b5-f174a36f865a. Creating new DispatcherLeaderProcess.
+[pool-2-thread-1] INFO org.apache.flink.runtime.resourcemanager.ResourceManagerServiceImpl - Resource manager service is granted leadership with session id c08c2fc9-8651-4e34-8af7-47a57372e8e0.
+[mini-cluster-io-thread-2] INFO org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Start SessionDispatcherLeaderProcess.
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Flink Mini Cluster started successfully
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Recover all persisted job graphs that are not finished, yet.
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Successfully recovered 0 persisted job graphs.
+[pool-2-thread-1] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at pekko://flink/user/rpc/resourcemanager_1 .
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at pekko://flink/user/rpc/dispatcher_2 .
+[main] INFO org.apache.flink.configuration.Configuration - Config uses fallback configuration key 'jobmanager.rpc.address' instead of key 'rest.address'
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Starting the resource manager.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Starting the slot manager.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Starting tokens update task
+[flink-pekko.actor.default-dispatcher-5] WARN org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - No tokens obtained so skipping notifications
+[flink-pekko.actor.default-dispatcher-5] WARN org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Tokens update task not started because either no tokens obtained or none of the tokens specified its renewal date
+[mini-cluster-io-thread-4] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader pekko://flink/user/rpc/resourcemanager_1 , session=c08c2fc9-8651-4e34-8af7-47a57372e8e0
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Connecting to ResourceManager pekko://flink/user/rpc/resourcemanager_1(8af747a57372e8e0c08c2fc986514e34).
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader pekko://flink/user/rpc/dispatcher_2 , session=88b55870-243e-44ed-84b5-f174a36f865a
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Resolved ResourceManager address, beginning registration
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering TaskManager with ResourceID 8b156670-cd04-415d-a8e3-9d46a167c65e (pekko://flink/user/rpc/taskmanager_0) at ResourceManager
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Successful registration at resource manager pekko://flink/user/rpc/resourcemanager_1 under registration id 24e191ab7aa20e0156145fd70e613a28.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Registering task executor 8b156670-cd04-415d-a8e3-9d46a167c65e under 24e191ab7aa20e0156145fd70e613a28 at the slot manager.
+=== PE4 Local MiniCluster Test ===
+Eventos de prueba: 14
+Merchants: merchant-001, merchant-002, merchant-003
+Ventanas: 3 minutos (10:00 - 10:02)
+Late event: evt-014 (timestamp 10:00:55, llega al final)
+Checkpoints: habilitados cada 5s
+Paralelismo: 2
+==================================
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Received JobGraph submission 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Submitting job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to the contender that is registered under component ID 'job-9c704f36e42cc1f751208f84927e250a'.
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMasterServiceLeadershipRunner - JobMasterServiceLeadershipRunner for job 9c704f36e42cc1f751208f84927e250a was granted leadership with leader id 99ae79f7-fdd8-4d0e-b0e5-55adcf062f03. Creating new JobMasterServiceProcess.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at pekko://flink/user/rpc/jobmanager_3 .
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Initializing job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Using restart back off time strategy ExponentialDelayRestartBackoffTimeStrategy(initialBackoffMS=1000, maxBackoffMS=60000, backoffMultiplier=1.5, resetBackoffThresholdMS=3600000, jitterFactor=0.1, attemptsBeforeResetBackoff=2147483647, currentRestartAttempt=0, nextRestartTimestamp=-2147483648) for PE4-LocalTest (9c704f36e42cc1f751208f84927e250a).
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Created execution graph cc2dc29d30caaf25c5e3d5ae1f443ea0 for job 9c704f36e42cc1f751208f84927e250a.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Running initialization on master for job PE4-LocalTest (9c704f36e42cc1f751208f84927e250a).
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Successfully ran initialization on master in 0 ms.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.scheduler.adapter.DefaultExecutionTopology - Built 1 new pipelined regions in 0 ms, total 1 pipelined regions currently.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@773928b3
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[jobmanager-io-thread-1] INFO org.apache.flink.core.fs.FileSystem - Hadoop is not in the classpath/dependencies. The extended set of supported File Systems via Hadoop is not available.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.checkpoint.CheckpointCoordinator - No checkpoint found during restore.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.jobmaster.JobMaster - Using failover strategy org.apache.flink.runtime.executiongraph.failover.RestartPipelinedRegionFailoverStrategy@62c07074 for PE4-LocalTest (9c704f36e42cc1f751208f84927e250a).
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader pekko://flink/user/rpc/jobmanager_3 , session=99ae79f7-fdd8-4d0e-b0e5-55adcf062f03
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Starting execution of job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a) under job master id b0e555adcf062f0399ae79f7fdd84d0e.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.PipelinedRegionSchedulingStrategy]
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Job PE4-LocalTest (9c704f36e42cc1f751208f84927e250a) switched from state CREATED to RUNNING.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Collection Source -> test-source (1/1) (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from CREATED to SCHEDULED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Connecting to ResourceManager pekko://flink/user/rpc/resourcemanager_1(8af747a57372e8e0c08c2fc986514e34)
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.jobmaster.JobMaster - Resolved ResourceManager address, beginning registration
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering job manager b0e555adcf062f0399ae79f7fdd84d0e@pekko://flink/user/rpc/jobmanager_3 for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registered job manager b0e555adcf062f0399ae79f7fdd84d0e@pekko://flink/user/rpc/jobmanager_3 for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.jobmaster.JobMaster - JobManager successfully registered at ResourceManager, leader id: 8af747a57372e8e0c08c2fc986514e34.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Received resource requirements from job 9c704f36e42cc1f751208f84927e250a: [ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=2}]
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Matching resource requirements against available resources.
+Missing resources:
+	 Job 9c704f36e42cc1f751208f84927e250a
+		ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=2}
+Current resources:
+	TaskManager 8b156670-cd04-415d-a8e3-9d46a167c65e
+		Available: ResourceProfile{taskHeapMemory=1024.000gb (1099511627776 bytes), taskOffHeapMemory=1024.000gb (1099511627776 bytes), managedMemory=80.000mb (83886080 bytes), networkMemory=64.000mb (67108864 bytes)}
+		Total:     ResourceProfile{taskHeapMemory=1024.000gb (1099511627776 bytes), taskOffHeapMemory=1024.000gb (1099511627776 bytes), managedMemory=80.000mb (83886080 bytes), networkMemory=64.000mb (67108864 bytes)}
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer - Starting allocation of slot 349f02f59a8861e7c1d3d2a40efa59dc from 8b156670-cd04-415d-a8e3-9d46a167c65e for job 9c704f36e42cc1f751208f84927e250a with resource profile ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Receive slot request 349f02f59a8861e7c1d3d2a40efa59dc for job 9c704f36e42cc1f751208f84927e250a from resource manager with leader id 8af747a57372e8e0c08c2fc986514e34.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer - Starting allocation of slot e035ee2b2c025bd247f6a5c842a3086a from 8b156670-cd04-415d-a8e3-9d46a167c65e for job 9c704f36e42cc1f751208f84927e250a with resource profile ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Allocated slot for 349f02f59a8861e7c1d3d2a40efa59dc with resources ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Add job 9c704f36e42cc1f751208f84927e250a for job leader monitoring.
+[mini-cluster-io-thread-1] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Try to register at job manager pekko://flink/user/rpc/jobmanager_3 with leader id 99ae79f7-fdd8-4d0e-b0e5-55adcf062f03.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Receive slot request e035ee2b2c025bd247f6a5c842a3086a for job 9c704f36e42cc1f751208f84927e250a from resource manager with leader id 8af747a57372e8e0c08c2fc986514e34.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Allocated slot for e035ee2b2c025bd247f6a5c842a3086a with resources ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Resolved JobManager address, beginning registration
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Successful registration at job manager pekko://flink/user/rpc/jobmanager_3 for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Establish JobManager connection for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Offer reserved slots to the leader of job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Collection Source -> test-source (1/1) (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Source: Collection Source -> test-source (1/1) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0 and vertex id cbc357ccb763df2852fee8c4fc7d55f2_0 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id 349f02f59a8861e7c1d3d2a40efa59dc
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0 and vertex id 90bea66de1c231edf33913ecd54406c1_0 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id 349f02f59a8861e7c1d3d2a40efa59dc
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0 and vertex id 90bea66de1c231edf33913ecd54406c1_1 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id e035ee2b2c025bd247f6a5c842a3086a
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0 and vertex id 08a489791a4e7fcd83ae029ef13928c6_0 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id 349f02f59a8861e7c1d3d2a40efa59dc
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0 and vertex id 08a489791a4e7fcd83ae029ef13928c6_1 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id e035ee2b2c025bd247f6a5c842a3086a
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0 and vertex id b628f3960bb753d714155b35575cb290_0 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id 349f02f59a8861e7c1d3d2a40efa59dc
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from SCHEDULED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (attempt #0) with attempt id cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0 and vertex id b628f3960bb753d714155b35575cb290_1 to 8b156670-cd04-415d-a8e3-9d46a167c65e @ localhost (dataPort=-1) with allocation id e035ee2b2c025bd247f6a5c842a3086a
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.state.TaskExecutorFileMergingManager - Registered new file merging snapshot manager for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.state.changelog.StateChangelogStorageLoader - StateChangelogStorageLoader initialized with shortcut names {memory,filesystem}.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.state.changelog.StateChangelogStorageLoader - Creating a changelog storage with name 'memory'.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.state.TaskExecutorChannelStateExecutorFactoryManager - Creating the channel state executor factory for job id 9c704f36e42cc1f751208f84927e250a
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0), deploy into slot with allocation id 349f02f59a8861e7c1d3d2a40efa59dc.
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from CREATED to DEPLOYING.
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) [DEPLOYING].
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0), deploy into slot with allocation id 349f02f59a8861e7c1d3d2a40efa59dc.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from CREATED to DEPLOYING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) [DEPLOYING].
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot e035ee2b2c025bd247f6a5c842a3086a.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0), deploy into slot with allocation id e035ee2b2c025bd247f6a5c842a3086a.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from CREATED to DEPLOYING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) [DEPLOYING].
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0), deploy into slot with allocation id 349f02f59a8861e7c1d3d2a40efa59dc.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from CREATED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot e035ee2b2c025bd247f6a5c842a3086a.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) [DEPLOYING].
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@785e3577
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@55928651
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@220d778e
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0), deploy into slot with allocation id e035ee2b2c025bd247f6a5c842a3086a.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from CREATED to DEPLOYING.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) [DEPLOYING].
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@298b1765
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@6a576b30
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0), deploy into slot with allocation id 349f02f59a8861e7c1d3d2a40efa59dc.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from CREATED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot e035ee2b2c025bd247f6a5c842a3086a.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) [DEPLOYING].
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@17613dc5
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0), deploy into slot with allocation id e035ee2b2c025bd247f6a5c842a3086a.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from DEPLOYING to INITIALIZING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from DEPLOYING to INITIALIZING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from DEPLOYING to INITIALIZING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from DEPLOYING to INITIALIZING.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from DEPLOYING to INITIALIZING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from CREATED to DEPLOYING.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) [DEPLOYING].
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from DEPLOYING to INITIALIZING.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot e035ee2b2c025bd247f6a5c842a3086a.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from DEPLOYING to INITIALIZING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from DEPLOYING to INITIALIZING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from DEPLOYING to INITIALIZING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@628f4b20
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend loader loads the state backend as HashMapStateBackend
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from DEPLOYING to INITIALIZING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.streaming.runtime.tasks.StreamTask - Checkpoint storage is set to 'filesystem': (checkpoints "file:/tmp/junit11499039501458545740/junit10279073820939798487")
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from DEPLOYING to INITIALIZING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Collection Source -> test-source (1/1) (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from DEPLOYING to INITIALIZING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from DEPLOYING to INITIALIZING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from DEPLOYING to INITIALIZING.
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@244f75f2
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@6f5d5286
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@13ede2de
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@27133988
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@4eae0928
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@7c0c0441
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@7ffc19c5
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@63e0c9e3
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@458cc169
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@1483718e
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@3c0fb2e1
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@240f2fa5
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@7db06a6f
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@32bdf09b
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@2db6a070
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@2fe0562a
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@34a795ff
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@171ecda2
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@15b0c0b5
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.state.StateBackendLoader - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@3e4456b9
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Collection Source -> test-source (1/1) (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from INITIALIZING to RUNNING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder - Finished to build heap keyed state-backend.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from INITIALIZING to RUNNING.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from INITIALIZING to RUNNING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from INITIALIZING to RUNNING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from INITIALIZING to RUNNING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from INITIALIZING to RUNNING.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from INITIALIZING to RUNNING.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from INITIALIZING to RUNNING.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] WARN com.streaming.flink.TransactionAnomalyDetector - ANOMALY DETECTED | merchant=merchant-001 | event_id=evt-006 | amount=300.00 | avg=141.83 | threshold=283.67 | ratio=2.12x
+2> [ANOMALY]  ANOMALY DETECTED | merchant=merchant-001 | event_id=evt-006 | amount=300.00 | avg=141.83 | threshold=283.67 | ratio=2.12x
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T09:57:00Z -> 2026-01-15T10:02:00Z], count=2, total=1700.00, avg=850.00}
+2> [TUMBLING] MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:00:00Z -> 2026-01-15T10:01:00Z], count=4, total=485.50, avg=121.38}
+1> [TUMBLING] MerchantAgg{merchant=merchant-003, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:02:00Z], count=2, total=1700.00, avg=850.00}
+2> [TUMBLING] MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:00:00Z -> 2026-01-15T10:01:00Z], count=2, total=620.00, avg=310.00}
+1> [TUMBLING] MerchantAgg{merchant=merchant-003, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:03:00Z], count=1, total=450.00, avg=450.00}
+2> [TUMBLING] MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:02:00Z], count=1, total=800.00, avg=800.00}
+2> [TUMBLING] MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:02:00Z], count=2, total=350.00, avg=175.00}
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T09:58:00Z -> 2026-01-15T10:03:00Z], count=3, total=2150.00, avg=716.67}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T09:56:00Z -> 2026-01-15T10:01:00Z], count=4, total=485.50, avg=121.38}
+2> [TUMBLING] MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:03:00Z], count=1, total=90.00, avg=90.00}
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T09:59:00Z -> 2026-01-15T10:04:00Z], count=3, total=2150.00, avg=716.67}
+2> [TUMBLING] MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:03:00Z], count=1, total=175.00, avg=175.00}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T09:56:00Z -> 2026-01-15T10:01:00Z], count=2, total=620.00, avg=310.00}
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T10:00:00Z -> 2026-01-15T10:05:00Z], count=3, total=2150.00, avg=716.67}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T09:57:00Z -> 2026-01-15T10:02:00Z], count=3, total=1420.00, avg=473.33}
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:06:00Z], count=3, total=2150.00, avg=716.67}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T09:57:00Z -> 2026-01-15T10:02:00Z], count=6, total=835.50, avg=139.25}
+1> [SLIDING]  MerchantAgg{merchant=merchant-003, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:07:00Z], count=1, total=450.00, avg=450.00}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T09:58:00Z -> 2026-01-15T10:03:00Z], count=4, total=1510.00, avg=377.50}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T09:58:00Z -> 2026-01-15T10:03:00Z], count=7, total=1010.50, avg=144.36}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T09:59:00Z -> 2026-01-15T10:04:00Z], count=7, total=1010.50, avg=144.36}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T09:59:00Z -> 2026-01-15T10:04:00Z], count=4, total=1510.00, avg=377.50}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:00:00Z -> 2026-01-15T10:05:00Z], count=7, total=1010.50, avg=144.36}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:00:00Z -> 2026-01-15T10:05:00Z], count=4, total=1510.00, avg=377.50}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:06:00Z], count=3, total=525.00, avg=175.00}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:01:00Z -> 2026-01-15T10:06:00Z], count=2, total=890.00, avg=445.00}
+2> [SLIDING]  MerchantAgg{merchant=merchant-001, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:07:00Z], count=1, total=175.00, avg=175.00}
+2> [SLIDING]  MerchantAgg{merchant=merchant-002, window=[2026-01-15T10:02:00Z -> 2026-01-15T10:07:00Z], count=1, total=90.00, avg=90.00}
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.jobmaster.JobMaster - Triggering a manual checkpoint for job 9c704f36e42cc1f751208f84927e250a.
+[Checkpoint Timer] INFO org.apache.flink.runtime.checkpoint.CheckpointCoordinator - Triggering checkpoint 1 (type=CheckpointType{name='Checkpoint', sharingFilesStrategy=FORWARD_BACKWARD}) @ 1794460998141 for job 9c704f36e42cc1f751208f84927e250a.
+[jobmanager-io-thread-1] INFO org.apache.flink.runtime.checkpoint.CheckpointCoordinator - Completed checkpoint 1 for job 9c704f36e42cc1f751208f84927e250a (15394 bytes, checkpointDuration=77 ms, finalizationTime=3 ms).
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from RUNNING to FINISHED.
+[Source: Collection Source -> test-source (1/1)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for Source: Collection Source -> test-source (1/1)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0).
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from RUNNING to FINISHED.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from RUNNING to FINISHED.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0).
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from RUNNING to FINISHED.
+[tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0).
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from RUNNING to FINISHED.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0).
+[anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0).
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from RUNNING to FINISHED.
+[anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0).
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task Source: Collection Source -> test-source (1/1)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from RUNNING to FINISHED.
+[sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0] INFO org.apache.flink.runtime.taskmanager.Task - Freeing task resources for sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0).
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task tumbling-1min-test -> Map -> Sink: tumbling-output (1/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task anomaly-detection-test -> Map -> Sink: anomaly-output (2/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Collection Source -> test-source (1/1) (cc2dc29d30caaf25c5e3d5ae1f443ea0_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task anomaly-detection-test -> Map -> Sink: anomaly-output (1/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task tumbling-1min-test -> Map -> Sink: tumbling-output (2/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FINISHED to JobManager for task sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2)#0 cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_0_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_0_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_1_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - anomaly-detection-test -> Map -> Sink: anomaly-output (1/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_b628f3960bb753d714155b35575cb290_0_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Received resource requirements from job 9c704f36e42cc1f751208f84927e250a: [ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=1}]
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - tumbling-1min-test -> Map -> Sink: tumbling-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_90bea66de1c231edf33913ecd54406c1_1_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - sliding-5min-1min-test -> Map -> Sink: sliding-output (2/2) (cc2dc29d30caaf25c5e3d5ae1f443ea0_08a489791a4e7fcd83ae029ef13928c6_1_0) switched from RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Clearing resource requirements of job 9c704f36e42cc1f751208f84927e250a
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.executiongraph.ExecutionGraph - Job PE4-LocalTest (9c704f36e42cc1f751208f84927e250a) switched from state RUNNING to FINISHED.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.checkpoint.CheckpointCoordinator - Stopping checkpoint coordinator for job 9c704f36e42cc1f751208f84927e250a.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Job 9c704f36e42cc1f751208f84927e250a reached terminal state FINISHED.
+=== Test completado exitosamente ===
+[main] INFO org.apache.flink.test.util.MiniClusterWithClientResource - Finalization triggered: Cluster shutdown is going to be initiated.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Stopping the JobMaster for job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.checkpoint.StandaloneCompletedCheckpointStore - Shutting down
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Disconnect TaskExecutor 8b156670-cd04-415d-a8e3-9d46a167c65e because: Stopping JobMaster for job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.slotpool.DefaultDeclarativeSlotPool - Releasing slot [349f02f59a8861e7c1d3d2a40efa59dc].
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Free slot TaskSlot(index:4, state:ACTIVE, resource profile: ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}, allocationId: 349f02f59a8861e7c1d3d2a40efa59dc, jobId: 9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.slotpool.DefaultDeclarativeSlotPool - Releasing slot [e035ee2b2c025bd247f6a5c842a3086a].
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.jobmaster.JobMaster - Close ResourceManager connection 3944263049b3ac519c73ddaa245a37a0: Stopping JobMaster for job 'PE4-LocalTest' (9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Disconnect job manager b0e555adcf062f0399ae79f7fdd84d0e@pekko://flink/user/rpc/jobmanager_3 for job 9c704f36e42cc1f751208f84927e250a from the resource manager.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Free slot TaskSlot(index:5, state:ACTIVE, resource profile: ResourceProfile{taskHeapMemory=256.000gb (274877906944 bytes), taskOffHeapMemory=256.000gb (274877906944 bytes), managedMemory=20.000mb (20971520 bytes), networkMemory=16.000mb (16777216 bytes)}, allocationId: e035ee2b2c025bd247f6a5c842a3086a, jobId: 9c704f36e42cc1f751208f84927e250a).
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer - Freeing slot 349f02f59a8861e7c1d3d2a40efa59dc.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer - Freeing slot e035ee2b2c025bd247f6a5c842a3086a.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Remove job 9c704f36e42cc1f751208f84927e250a from job leader monitoring.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Close JobManager connection for job 9c704f36e42cc1f751208f84927e250a.
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Shutting down Flink Mini Cluster
+[main] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Shutting down rest endpoint.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Stopping TaskExecutor pekko://flink/user/rpc/taskmanager_0.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Close ResourceManager connection 3944263049b3ac519c73ddaa245a37a0.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Closing TaskExecutor connection 8b156670-cd04-415d-a8e3-9d46a167c65e because: The TaskExecutor is shutting down.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Unregistering task executor 24e191ab7aa20e0156145fd70e613a28 from the slot manager.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.state.TaskExecutorStateChangelogStoragesManager - Shutting down TaskExecutorStateChangelogStoragesManager.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.state.TaskExecutorChannelStateExecutorFactoryManager - Shutting down TaskExecutorChannelStateExecutorFactoryManager.
+[ForkJoinPool.commonPool-worker-19] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Removing cache directory /tmp/flink-web-ui
+[ForkJoinPool.commonPool-worker-19] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - http://localhost:37461 lost leadership
+[ForkJoinPool.commonPool-worker-19] INFO org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Shut down complete.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Shut down cluster because application is in CANCELED, diagnostics DispatcherResourceManagerComponent has been closed..
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Stop job leader service.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.state.TaskExecutorLocalStateStoresManager - Shutting down TaskExecutorLocalStateStoresManager.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent - Closing components.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Stopping SessionDispatcherLeaderProcess.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopping dispatcher pekko://flink/user/rpc/dispatcher_2.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopping all currently running jobs of dispatcher pekko://flink/user/rpc/dispatcher_2.
+[flink-pekko.actor.default-dispatcher-5] INFO org.apache.flink.runtime.resourcemanager.ResourceManagerServiceImpl - Stopping resource manager service.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Stopping credential renewal
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.security.token.DefaultDelegationTokenManager - Stopped credential renewal
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /tmp/junit11499039501458545740/junit4942065797784376206/flink-io-aaa66afd-61da-4256-a639-4618e3b7c94a
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Closing the slot manager.
+[flink-pekko.actor.default-dispatcher-9] INFO org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager - Suspending the slot manager.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Shutting down the network environment and its components.
+[pool-2-thread-1] INFO org.apache.flink.runtime.resourcemanager.ResourceManagerServiceImpl - Resource manager service is not running. Ignore revoking leadership.
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopped dispatcher pekko://flink/user/rpc/dispatcher_2.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /tmp/junit11499039501458545740/junit4942065797784376206/flink-netty-shuffle-b1baeaaf-b5ce-4a58-b9bd-8b725b3cd157
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.KvStateService - Shutting down the kvState service and its components.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Stop job leader service.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.filecache.FileCache - removed file cache directory /tmp/junit11499039501458545740/junit4942065797784376206/flink-dist-cache-2ba9bb99-0af7-471e-8a1f-2c2f86d8af3a
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.flink.runtime.taskexecutor.TaskExecutor - Stopped TaskExecutor pekko://flink/user/rpc/taskmanager_0.
+[RpcService-Supervisor-Termination-Future-Executor-thread-1] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Stopping Pekko RPC service.
+[flink-metrics-6] INFO org.apache.pekko.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+[flink-metrics-6] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Stopping Pekko RPC service.
+[flink-metrics-6] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Stopped Pekko RPC service.
+[flink-pekko.actor.default-dispatcher-7] INFO org.apache.pekko.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.blob.PermanentBlobCache - Shutting down BLOB cache
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.blob.TransientBlobCache - Shutting down BLOB cache
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.blob.BlobServer - Stopped BLOB server at 0.0.0.0:42329
+[flink-pekko.actor.default-dispatcher-8] INFO org.apache.flink.runtime.rpc.pekko.PekkoRpcService - Stopped Pekko RPC service.
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.57 sec
+Running com.streaming.flink.TransactionEventTest
+[main] WARN com.streaming.flink.TransactionDeserializer - Error deserializando evento, descartando: Unrecognized token 'not': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (byte[])"not-json"; line: 1, column: 5]
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 sec
+[TaskExecutorFileMergingManager shutdown hook] INFO org.apache.flink.runtime.state.TaskExecutorFileMergingManager - Shutting down TaskExecutorFileMergingManager.
+
+Results :
+
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  5.247 s
+[[1;34mINFO[m] Finished at: 2026-11-12T00:23:18-05:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
