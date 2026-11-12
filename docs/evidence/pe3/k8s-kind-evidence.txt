@@ -1,0 +1,85 @@
+=== PE3 Kubernetes Evidence - Kind Cluster ===
+Fecha: 2026-11-12T03:46:03Z
+
+=== 1. PODS RUNNING ===
+NAME                               READY   STATUS    RESTARTS   AGE     IP            NODE                NOMINATED NODE   READINESS GATES
+kafka-66b7599bd4-s8bn6             1/1     Running   0          22m     10.244.0.6    pe3-control-plane   <none>           <none>
+sensor-producer-d7c547fcc-fgqcm    1/1     Running   0          4m23s   10.244.0.11   pe3-control-plane   <none>           <none>
+spark-streaming-7b68958775-jk9r8   1/1     Running   0          4m23s   10.244.0.12   pe3-control-plane   <none>           <none>
+zookeeper-9b896f988-vshbg          1/1     Running   0          24m     10.244.0.5    pe3-control-plane   <none>           <none>
+---
+Wed Nov 11 22:40:04 -05 2026
+
+=== 2. TOPIC DESCRIBE (3 particiones) ===
+Topic: urban_sensors    TopicId: hG_t_TIRTP2nbNObTSOOwQ PartitionCount: 3ReplicationFactor: 1     Configs: 
+        Topic: urban_sensors    Partition: 0    Leader: 1       Replicas: 1       Isr: 1
+        Topic: urban_sensors    Partition: 1    Leader: 1       Replicas: 1       Isr: 1
+        Topic: urban_sensors    Partition: 2    Leader: 1       Replicas: 1       Isr: 1
+
+=== 3. PRODUCER LOGS ===
+{"sensor_id": "sensor-sur-003", "temperature": 21.17, "humidity": 59.71, "air_quality_index": 51.5, "timestamp": "2026-11-12T03:39:15Z"}
+{"sensor_id": "sensor-oriente-004", "temperature": 23.6, "humidity": 51.24, "air_quality_index": 67.1, "timestamp": "2026-11-12T03:39:17Z"}
+{"sensor_id": "sensor-occidente-005", "temperature": 21.11, "humidity": 55.5, "air_quality_index": 36.3, "timestamp": "2026-11-12T03:39:19Z"}
+{"sensor_id": "sensor-norte-001", "temperature": 22.99, "humidity": 54.08, "air_quality_index": 45.8, "timestamp": "2026-11-12T03:39:21Z"}
+{"sensor_id": "sensor-oriente-004", "temperature": 22.24, "humidity": 45.18, "air_quality_index": 60.1, "timestamp": "2026-11-12T03:39:23Z"}
+{"sensor_id": "sensor-occidente-005", "temperature": 18.93, "humidity": 66.26, "air_quality_index": 33.5, "timestamp": "2026-11-12T03:39:25Z"}
+{"sensor_id": "sensor-sur-003", "temperature": 19.69, "humidity": 91.06, "air_quality_index": 36.3, "timestamp": "2026-11-12T03:39:27Z"}
+{"sensor_id": "sensor-centro-002", "temperature": 24.45, "humidity": 70.31, "air_quality_index": 88.5, "timestamp": "2026-11-12T03:39:29Z"}
+{"sensor_id": "sensor-oriente-004", "temperature": 26.4, "humidity": 66.62, "air_quality_index": 83.0, "timestamp": "2026-11-12T03:39:31Z"}
+{"sensor_id": "sensor-norte-001", "temperature": 21.82, "humidity": 43.2, "air_quality_index": 42.4, "timestamp": "2026-11-12T03:39:33Z"}
+{"sensor_id": "sensor-occidente-005", "temperature": 15.77, "humidity": 61.22, "air_quality_index": 42.1, "timestamp": "2026-11-12T03:39:35Z"}
+{"sensor_id": "sensor-centro-002", "temperature": 22.54, "humidity": 64.61, "air_quality_index": 76.9, "timestamp": "2026-11-12T03:39:37Z"}
+{"sensor_id": "sensor-norte-001", "temperature": 24.99, "humidity": 77.34, "air_quality_index": 57.6, "timestamp": "2026-11-12T03:39:39Z"}
+{"sensor_id": "sensor-norte-001", "temperature": 22.09, "humidity": 57.47, "air_quality_index": 48.0, "timestamp": "2026-11-12T03:39:41Z"}
+{"sensor_id": "sensor-oriente-004", "temperature": 23.36, "humidity": 77.58, "air_quality_index": 66.0, "timestamp": "2026-11-12T03:39:43Z"}
+
+=== 4. SPARK STREAMING OUTPUT ===
+-------------------------------------------
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|start              |end                |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-oriente-004  |20.68          |72.8   |74.1        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-sur-003      |18.16          |58.1   |88.9        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-centro-002   |23.52          |74.0   |71.6        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-occidente-005|20.53          |34.9   |70.2        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-norte-001    |21.99          |43.7   |56.6        |
++-------------------+-------------------+--------------------+---------------+-------+------------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|start              |end                |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-oriente-004  |20.95          |60.0   |82.2        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-sur-003      |21.71          |52.4   |74.6        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-centro-002   |23.61          |76.2   |67.4        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-occidente-005|20.32          |34.3   |73.0        |
+|2026-11-12 03:38:00|2026-11-12 03:39:00|sensor-norte-001    |22.33          |46.2   |51.5        |
++-------------------+-------------------+--------------------+---------------+-------+------------+
+
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|start              |end                |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-occidente-005|21.07          |40.7   |62.6        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-norte-001    |23.78          |39.2   |69.6        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-oriente-004  |23.11          |56.9   |53.7        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-centro-002   |23.52          |86.7   |70.4        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-sur-003      |20.78          |48.5   |71.5        |
++-------------------+-------------------+--------------------+---------------+-------+------------+
+
+-------------------------------------------
+Batch: 9
+-------------------------------------------
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|start              |end                |sensor_id           |avg_temperature|avg_aqi|avg_humidity|
++-------------------+-------------------+--------------------+---------------+-------+------------+
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-occidente-005|20.58          |42.1   |59.4        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-norte-001    |21.41          |44.5   |66.9        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-oriente-004  |23.49          |65.0   |63.1        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-centro-002   |22.74          |82.4   |61.7        |
+|2026-11-12 03:39:00|2026-11-12 03:40:00|sensor-sur-003      |21.1           |48.8   |74.1        |
++-------------------+-------------------+--------------------+---------------+-------+------------+
