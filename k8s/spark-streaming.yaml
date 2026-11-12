@@ -36,10 +36,14 @@ spec:
         - name: spark
           image: apache/spark:3.5.3-python3
           command:
-            - /opt/spark/bin/spark-submit
-            - --packages
-            - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3
-            - /app/spark_streaming_job.py
+            - sh
+            - -c
+            - |
+              mkdir -p /tmp/.ivy2/cache /tmp/.ivy2/jars &&
+              /opt/spark/bin/spark-submit \
+                --conf spark.jars.ivy=/tmp/.ivy2 \
+                --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 \
+                /app/spark_streaming_job.py
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "kafka:9092"
