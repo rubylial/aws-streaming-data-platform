@@ -21,7 +21,7 @@
     <properties>
         <java.version>11</java.version>
         <flink.version>1.19.0</flink.version>
-        <iceberg.version>1.5.2</iceberg.version>
+        <iceberg.version>1.6.1</iceberg.version>
         <kda.runtime.version>1.2.0</kda.runtime.version>
         <jackson.version>2.15.3</jackson.version>
         <aws.sdk.version>2.25.11</aws.sdk.version>
