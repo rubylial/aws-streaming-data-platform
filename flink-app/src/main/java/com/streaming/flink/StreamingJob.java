@@ -146,3 +146,88 @@ public class StreamingJob {
         } else {
             // Modo local/print: salida por consola (PE4)
             tumblingResults.print().name("tumbling-output");
+            slidingResults.print().name("sliding-output");
+            anomalies.print().name("anomaly-output");
+        }
+
+        env.execute("PE4/PE5-TransactionStreaming");
+    }
+
+    // =========================================================
+    // Aggregate Function: acumula count y sum
+    // =========================================================
+
+    /**
+     * Acumulador intermedio para la agregación incremental.
+     */
+    public static class CountSumAccumulator {
+        public long count = 0;
+        public double sum = 0.0;
+    }
+
+    /**
+     * Función de agregación incremental: count + sum por ventana.
+     * Se ejecuta en cada evento sin almacenar todos los registros.
+     */
+    public static class CountSumAggregate
+            implements AggregateFunction<TransactionEvent, CountSumAccumulator, CountSumAccumulator> {
+
+        @Override
+        public CountSumAccumulator createAccumulator() {
+            return new CountSumAccumulator();
+        }
+
+        @Override
+        public CountSumAccumulator add(TransactionEvent event, CountSumAccumulator acc) {
+            acc.count++;
+            acc.sum += event.getAmount();
+            return acc;
+        }
+
+        @Override
+        public CountSumAccumulator getResult(CountSumAccumulator acc) {
+            return acc;
+        }
+
+        @Override
+        public CountSumAccumulator merge(CountSumAccumulator a, CountSumAccumulator b) {
+            a.count += b.count;
+            a.sum += b.sum;
+            return a;
+        }
+    }
+
+    // =========================================================
+    // Process Window Function: agrega metadata de ventana
+    // =========================================================
+
+    /**
+     * Combina el resultado del aggregate con la información de la ventana
+     * (start, end) y el key (merchantId).
+     */
+    public static class MerchantWindowFunction
+            extends ProcessWindowFunction<CountSumAccumulator, MerchantAggregation, String, TimeWindow> {
+
+        @Override
+        public void process(String merchantId,
+                            ProcessWindowFunction<CountSumAccumulator, MerchantAggregation, String, TimeWindow>.Context context,
+                            Iterable<CountSumAccumulator> elements,
+                            Collector<MerchantAggregation> out) {
+
+            CountSumAccumulator acc = elements.iterator().next();
+            TimeWindow window = context.window();
+
+            String windowStart = FORMATTER.format(Instant.ofEpochMilli(window.getStart()));
+            String windowEnd = FORMATTER.format(Instant.ofEpochMilli(window.getEnd()));
+            double avgAmount = acc.count > 0 ? acc.sum / acc.count : 0.0;
+
+            out.collect(new MerchantAggregation(
+                    merchantId, windowStart, windowEnd,
+                    acc.count, acc.sum, avgAmount
+            ));
+        }
+
+        private static final DateTimeFormatter FORMATTER =
+                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'").withZone(ZoneOffset.UTC);
+    }
+}
