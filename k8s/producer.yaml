@@ -36,14 +36,14 @@ spec:
         - name: producer
           image: python:3.11-slim
           command:
-            - python
-            - /app/producer_sensors.py
-            - --bootstrap-servers
-            - kafka:9092
-            - --topic
-            - urban_sensors
-            - --interval
-            - "2"
+            - sh
+            - -c
+            - |
+              pip install --quiet kafka-python &&
+              python /app/producer_sensors.py \
+                --bootstrap-servers kafka:9092 \
+                --topic urban_sensors \
+                --interval 2
           volumeMounts:
             - name: producer-code
               mountPath: /app
