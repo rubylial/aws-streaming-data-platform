@@ -154,7 +154,7 @@ public class IcebergLocalTest {
         // 6. Verificar datos: leer transactions
         // -------------------------------------------------------
         TableResult txnResult = tableEnv.executeSql(
-            "SELECT event_id, merchant_id, amount, status FROM transactions ORDER BY event_id");
+            "SELECT event_id, merchant_id, amount, status FROM transactions");
 
         List<String> txnRows = collectResults(txnResult);
         System.out.println("\n--- Transactions leídas desde Iceberg ---");
@@ -169,7 +169,7 @@ public class IcebergLocalTest {
         // -------------------------------------------------------
         TableResult aggResult = tableEnv.executeSql(
             "SELECT merchant_id, transaction_count, total_amount, avg_amount "
-            + "FROM merchant_aggregations ORDER BY merchant_id, total_amount");
+            + "FROM merchant_aggregations");
 
         List<String> aggRows = collectResults(aggResult);
         System.out.println("\n--- Agregaciones leídas desde Iceberg ---");
