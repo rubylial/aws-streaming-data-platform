@@ -83,6 +83,18 @@ data "aws_caller_identity" "current" {}
 # --------------------------------------------------------
 # Glue Table — transactions_iceberg
 # --------------------------------------------------------
+# Particionada por merchant_id (hidden partitioning Iceberg).
+#
+# Estrategia de particionado:
+#   - merchant_id como partition key permite Partition Pruning
+#     en Athena/Redshift: WHERE merchant_id = 'x' solo escanea
+#     los data files de ese merchant.
+#   - Iceberg hidden partitioning maneja la ubicación de archivos
+#     de forma transparente (no requiere rutas estilo Hive).
+#   - Alternativa evaluada: particionar por hora (event_time),
+#     pero con volumen académico bajo, merchant_id ofrece mejor
+#     selectividad y demuestra partition pruning de forma clara.
+# --------------------------------------------------------
 
 resource "aws_glue_catalog_table" "transactions" {
   database_name = aws_glue_catalog_database.lakehouse.name
@@ -142,10 +154,21 @@ resource "aws_glue_catalog_table" "transactions" {
       type = "timestamp"
     }
   }
+
+  # Partition keys: Iceberg hidden partitioning por merchant_id.
+  # Athena y Redshift Spectrum aprovechan partition pruning
+  # para escanear solo los archivos del merchant consultado.
+  partition_keys {
+    name = "merchant_id"
+    type = "string"
+  }
 }
 
 # --------------------------------------------------------
 # Glue Table — merchant_aggregations_iceberg
+# --------------------------------------------------------
+# Particionada por merchant_id.
+# Misma estrategia: pruning por merchant en consultas analíticas.
 # --------------------------------------------------------
 
 resource "aws_glue_catalog_table" "merchant_aggregations" {
@@ -193,6 +216,11 @@ resource "aws_glue_catalog_table" "merchant_aggregations" {
       name = "avg_amount"
       type = "double"
     }
+  }
+
+  partition_keys {
+    name = "merchant_id"
+    type = "string"
   }
 }
 
