@@ -7,25 +7,36 @@ PE3 es un **ejercicio técnico independiente** de la arquitectura principal AWS
 
 ## Arquitectura
 
-```
-Sensores simulados (Python)
-        │
-        ▼
-  Kafka Broker (topic: urban_sensors, 3 particiones)
-        │
-        ▼
-  Spark Structured Streaming
-  ┌─────────────────────────────────┐
-  │ Ventana tumbling: 1 minuto      │
-  │ Agrupación: sensor_id           │
-  │ Métricas: avg(temperature),     │
-  │           avg(air_quality_index),│
-  │           avg(humidity)          │
-  │ Watermark: 30 segundos          │
-  └─────────────────────────────────┘
-        │
-        ▼
-  Console / Parquet output
+```mermaid
+flowchart TD
+    subgraph Productor
+        P["🌡️ Sensores Simulados<br/><i>Python · kafka-python</i>"]
+    end
+
+    subgraph Kafka["Apache Kafka"]
+        T["Topic: urban_sensors<br/>3 particiones · key = sensor_id"]
+    end
+
+    subgraph Spark["Spark Structured Streaming"]
+        S1["Deserialización JSON<br/>Schema tipado"]
+        S2["Watermark: 30s"]
+        S3["Window: tumbling 1 min<br/>groupBy: sensor_id"]
+        S4["Agregaciones:<br/>avg temperature · avg AQI · avg humidity"]
+        S1 --> S2 --> S3 --> S4
+    end
+
+    subgraph Output
+        C["Console output"]
+    end
+
+    P -- "JSON events<br/>sensor_id, temperature,<br/>humidity, air_quality_index,<br/>timestamp" --> T
+    T --> S1
+    S4 --> C
+
+    style Productor fill:#e8f5e9,stroke:#388e3c
+    style Kafka fill:#fff3e0,stroke:#f57c00
+    style Spark fill:#e3f2fd,stroke:#1976d2
+    style Output fill:#f3e5f5,stroke:#7b1fa2
 ```
 
 ## Esquema de datos
