@@ -68,15 +68,15 @@ Producer JSON ──► Kinesis Data Streams ──┬──► Data Firehose �
 
 ## Preentregas
 
-| PE | Alcance | Estado |
-|---|---|---|
-| PE1 | Terraform base, VPC, IAM, backend remoto | EN PROGRESO |
-| PE2 | Kinesis Data Streams + Firehose → S3 | NOT_STARTED |
-| PE3 | Kafka + Kubernetes + Spark (ejercicio aislado) | NOT_STARTED |
-| PE4 | Managed Apache Flink stateful | NOT_STARTED |
-| PE5 | Apache Iceberg + Glue Data Catalog | NOT_STARTED |
-| PE6 | Redshift Streaming Ingestion + MV | NOT_STARTED |
-| DAAT | Documento de Arquitectura y Auditoría Técnica | NOT_STARTED |
+   | PE | Alcance | Estado | README |
+   |---|---|---|---|
+   | PE1 | Terraform base, VPC, IAM, backend remoto | `LOCAL_VALIDATED` | — |
+   | PE2 | Kinesis Data Streams + Firehose → S3 | `LOCAL_VALIDATED` | — |
+   | PE3 | Kafka + Kubernetes + Spark (ejercicio aislado) | `LOCAL_VALIDATED` | [PE3_README](docs/PE3_README.md) |
+   | PE4 | Managed Apache Flink stateful | `LOCAL_VALIDATED` | [PE4_README](docs/PE4_README.md) |
+   | PE5 | Apache Iceberg + Glue Data Catalog | `NOT_STARTED` | — |
+   | PE6 | Redshift Streaming Ingestion + MV | `NOT_STARTED` | — |
+   | DAAT | Documento de Arquitectura y Auditoría Técnica | `NOT_STARTED` | — |
 
 ## Validación local (costo cero)
 
