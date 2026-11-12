@@ -1,0 +1,20 @@
+$ python3 -c "import yaml; ..." # Validación de manifiestos K8s (sin cluster)
+Fecha: 2026-11-11
+Herramienta: PyYAML safe_load_all (validación estructura YAML + kind/metadata)
+
+✅ k8s/configmap-producer.yaml: ConfigMap/producer-code
+✅ k8s/configmap-spark.yaml: ConfigMap/spark-code
+✅ k8s/kafka.yaml: Deployment/kafka
+✅ k8s/kafka.yaml: Service/kafka
+✅ k8s/namespace.yaml: Namespace/urban-sensors
+✅ k8s/producer.yaml: Deployment/sensor-producer
+✅ k8s/spark-streaming.yaml: Deployment/spark-streaming
+✅ k8s/spark-streaming.yaml: Service/spark-streaming
+✅ k8s/zookeeper.yaml: Deployment/zookeeper
+✅ k8s/zookeeper.yaml: Service/zookeeper
+
+Resultado: TODOS VÁLIDOS
+
+Nota: validación de sintaxis YAML y estructura K8s (kind, metadata.name).
+No se ejecutó contra un cluster real (kubectl dry-run requiere cluster activo).
+Los manifiestos referencian correctamente los ConfigMaps producer-code y spark-code.
