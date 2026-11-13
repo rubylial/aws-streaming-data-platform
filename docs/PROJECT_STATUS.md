@@ -1,71 +1,88 @@
 # PROJECT STATUS — AWS Real-Time Data Engineering Capstone
 
-**Última actualización:** 2026-11-12  
-**Repositorio:** github.com/rubylial/aws-streaming-data-platform  
+**Última actualización:** 2026-11-13
+**Repositorio:** github.com/rubylial/aws-streaming-data-platform
 **Branch principal:** main
 
 ## Estado general
 
 | Entrega | Estado | CI | Evidencia AWS | Branch |
 |---|---|---|---|---|
-| PE1 — Terraform/VPC/IAM/Backend | `LOCAL_VALIDATED` | ✅ | ❌ | `main` |
-| PE2 — Kinesis/Firehose/Productor | `LOCAL_VALIDATED` | ✅ | ❌ | `feature/ingesta-kinesis` → `main` |
+| PE1 — Terraform/VPC/IAM/Backend | `LOCAL_VALIDATED` | ✅ | ❌ (VPC no desplegada) | `main` |
+| PE2 — Kinesis/Firehose/Productor | `AWS_VALIDATED` | ✅ | ✅ | `feature/ingesta-kinesis` → `main` |
 | PE3 — Kafka/Kubernetes/Spark | `LOCAL_VALIDATED` | ✅ | N/A (local) | `feature/pe3-kafka-spark` → `main` |
-| PE4 — Flink Stateful | `LOCAL_VALIDATED` | ✅ | ❌ | `feature/pe4-flink` → `main` |
+| PE4 — Flink Stateful | `LOCAL_VALIDATED` | ✅ | ✅ (MiniCluster local) | `feature/pe4-flink` → `main` |
 | PE5 — Iceberg/Glue/Athena | `AWS_VALIDATED` | ✅ | ✅ | `feature/pe5-iceberg` → `main` |
-| PE6 — Redshift Streaming | `IMPLEMENTED_UNVERIFIED` | ✅ | ❌ | `feature/pe6-redshift` → `main` |
-| DAAT — Documento final | `LOCAL_VALIDATED` | — | Parcial | `main` |
+| PE6 — Redshift Streaming | `AWS_VALIDATED` | ✅ | ✅ | `feature/pe6-redshift` → `main` |
+| DAAT — Documento final | `LOCAL_VALIDATED` | — | Parcial (E2E incompleto) | `main` |
 
 ## Restricción de costo
 
-**Presupuesto: $0 USD.** Validación AWS realizada exclusivamente en AWS Academy Learner Lab con créditos académicos precargados ($50 pool).
+**Presupuesto: $0 USD real.** Validación AWS realizada exclusivamente en AWS Academy Learner Lab con créditos académicos precargados.
 
-### Validaciones realizadas
+### Sesiones de validación AWS
 
-**Sin costo (todas las entregas):**
+**Sesión 1 — PE5 (2026-11-12, ~$0.05):**
+- Glue database + 2 tablas Iceberg + Athena (SHOW TABLES, DESCRIBE, COUNT)
+
+**Sesión 2 — PE6 + PE2 (2026-11-12, ~$3-4):**
+- Redshift Provisioned ra3.large (Serverless bloqueado en Academy)
+- Kinesis Data Stream (2 shards) + productor JSON (50 eventos)
+- Firehose → S3 (buffering 5MB/60s)
+- 13 queries SQL en Redshift Query Editor v2
+
+### Validaciones locales sin costo
 - `terraform fmt -check`, `terraform init -backend=false`, `terraform validate` (CI)
-- Compilación Maven y tests JUnit (Flink)
+- PE4: `mvn clean package` → BUILD SUCCESS + MiniCluster test (9 tests)
+- PE3: Docker/Kind local (Kafka + Spark Structured Streaming)
 - Revisión estática de SQL (Redshift, Athena)
-- Docker Compose local (PE3 Kafka/Spark)
 
-**AWS Academy Learner Lab (2026-11-12, ~$0.05):**
-- PE5: Glue database `streaming_data_platform_dev` creada
-- PE5: Tablas Iceberg `transactions` y `merchant_aggregations` creadas en Glue Catalog
-- PE5: Athena — SHOW TABLES, DESCRIBE ×2, SELECT COUNT(*) ejecutados exitosamente
-- PE5: Limpieza completa de recursos realizada
-- Créditos restantes: ~$49.55 de $50
+## PE2 — Evidencias AWS (2026-11-12)
 
-## PE5 — Evidencias AWS (2026-11-12)
-
-| Evidencia | Resultado | Captura |
+| Criterio | Peso | Evidencia |
 |---|---|---|
-| Glue database creada | `streaming_data_platform_dev` | ✅ Screenshot |
-| Tabla `transactions` (Iceberg, 7 columnas + partition) | Creada con format Apache Iceberg | ✅ Screenshot |
-| Tabla `merchant_aggregations` (Iceberg, 6 columnas + partition) | Creada con format Apache Iceberg | ✅ Screenshot |
-| Athena: SHOW TABLES | 2 tablas listadas | ✅ Screenshot |
-| Athena: DESCRIBE transactions | Schema correcto | ✅ Screenshot |
-| Athena: DESCRIBE merchant_aggregations | Schema correcto | ✅ Screenshot |
-| Athena: SELECT COUNT(*) | `total_events = 0` (esperado, sin Flink) | ✅ Screenshot |
-| Athena: Recent queries | Historial de ejecución | ✅ Screenshot |
-| Limpieza completa | Tablas, database y buckets S3 borrados | ✅ Confirmado |
+| Kinesis PROVISIONED 2 shards + productor partition keys variables | 30% | ✅ Stream detail + productor 50 eventos |
+| Firehose → S3 (5MB/60s) | 25% | ✅ Firehose Monitoring + objetos S3 |
+| IAM/KMS | 20% | ✅ Terraform repo (mínimo privilegio) |
+| CloudWatch + pruebas | 15% | ✅ IncomingRecords metrics |
+| Git branch | 10% | ✅ |
 
-> **Nota:** Las tablas están vacías porque Flink no fue ejecutado en AWS.
-> Esto demuestra que Glue Catalog + Athena están correctamente configurados
-> para recibir y consultar datos Iceberg. La escritura fue validada localmente
-> con IcebergLocalTest (BUILD SUCCESS).
+## PE4 — Correcciones del docente aplicadas
 
-## Criterios BLOQUEADOS
+La devolución (53%) pidió 3 cosas, todas resueltas:
 
-Los siguientes criterios requieren despliegue AWS real y están marcados `BLOQUEADO_POR_COSTO`:
-- PE1: VPC/subnets desplegadas en AWS
-- PE2: Stream activo, objetos S3 verificados
-- PE4: Ejecución Flink en Managed Service, checkpoints observados
-- ~~PE5: Tablas Iceberg con datos reales, queries Athena ejecutadas~~ → **RESUELTO 2026-11-12**
-- PE6: Redshift Serverless activo, MV con datos, JOINs verificados
-- DAAT: Prueba end-to-end (30% del peso)
+| Corrección pedida | Estado |
+|---|---|
+| Corregir error de tipos (shard assigner) + dependencias de build | ✅ `mvn package` BUILD SUCCESS |
+| Instanciar módulo analytics en environments/dev | ✅ Instanciado en `main.tf` |
+| Cambiar `code_content_type` a JAR | ✅ Aplicado |
+| Ejecutar el job al menos en local + evidencia | ✅ MiniCluster test (logs en `docs/evidence/pe4/`) |
+
+**Pendiente:** re-evaluación del docente.
+
+## PE6 — Evidencias AWS (2026-11-12)
+
+| Criterio | Peso | Evidencia |
+|---|---|---|
+| FROM KINESIS + MV ≥3 campos JSON | 35% | ✅ MV 6 campos, COUNT=50, procedencia Kinesis |
+| FROM DATA CATALOG + JOIN | 25% | ✅ External schema Glue + JOIN streaming×Iceberg |
+| Refresh/AUTO REFRESH + latencia | 15% | ✅ autorefresh=t + métricas latencia/freshness |
+| IAM mínimo privilegio | 15% | ✅ Terraform repo |
+| SQL + PDF + evidencia | 10% | ✅ 13 queries + PDF |
+
+> **Nota:** Redshift Serverless bloqueado en Academy (`CreateNamespace` denegado).
+> Se usó Redshift Provisioned ra3.large (único node type que soporta Streaming
+> Ingestion además de Serverless). Tablas Iceberg vacías (Flink no ejecutado en
+> AWS); el JOIN demuestra que ambos external schemas funcionan y se pueden cruzar.
+
+## Criterios PENDIENTES
+
+- **PE1**: VPC/subnets desplegadas → `BLOQUEADO_POR_COSTO` (declarativo; validable casi gratis en lab futuro sin NAT)
+- **DAAT-02 E2E (30%)**: tramo Flink→Iceberg no ejecutado en AWS. Trazabilidad parcial
+  probada (productor→Kinesis→Redshift MV vía sequence_number). Brecha documentada.
 
 ## Siguiente paso
 
-1. **PE6 declarativa**: preparar SQL, Terraform, IAM y README sin costo
-2. **PE6 lab**: evaluar si los créditos restantes (~$49.55) permiten una sesión Redshift (~$4-8)
-3. **DAAT**: consolidar evidencias, arquitectura y limitaciones
+1. Actualizar DAAT con evidencia AWS de hoy (secciones Kinesis/Firehose, Redshift, E2E)
+2. Anonimizar Account ID en PDFs antes de entrega
+3. (Opcional) Validar PE1 VPC en lab futuro (casi $0)
