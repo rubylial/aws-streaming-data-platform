@@ -80,6 +80,7 @@ evidence/pe6/ # Evidencia AWS (PDF + capturas)
 3. `03_external_schema_glue.sql` — schema `lakehouse` FROM DATA CATALOG
 4. `04_queries_and_joins.sql` — consultas + JOINs
 5. `05_refresh_and_monitoring.sql` — REFRESH manual + métricas
+6. `06_analytics_role.sql` — Rol de analítica con acceso restringido (seguridad)
 
 ## JOIN: Streaming × Iceberg
 
