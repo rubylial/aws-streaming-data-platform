@@ -5,25 +5,31 @@
 -- materializa como tabla consultable en Redshift.
 --
 -- Campos extraídos del JSON (≥3 requeridos por rúbrica):
---   1. event_id
---   2. event_time
---   3. merchant_id
---   4. amount
---   5. currency
---   6. status
+--   1. event_id   4. amount
+--   2. event_time 5. currency
+--   3. merchant_id 6. status
 --
--- AUTO REFRESH: Redshift actualiza la MV automáticamente
--- cuando hay nuevos registros en el stream.
+-- AUTO REFRESH YES: Redshift actualiza la MV automáticamente.
+--
+-- IMPORTANTE (validado en AWS 2026-11-12):
+--   event_time se deja como VARCHAR (texto). El CAST a TIMESTAMP
+--   es una función MUTABLE y Redshift NO permite AUTO REFRESH sobre
+--   MVs con funciones mutables:
+--     "Auto-refresh is not supported for materialized views defined
+--      on mutable functions. Found mutable function: cast from VARCHAR
+--      to TIMESTAMP."
+--   Por eso el cast a timestamp se hace en las consultas downstream
+--   (ver 04_queries_and_joins.sql y 05_refresh_and_monitoring.sql).
 --
 -- BLOQUEADO_POR_COSTO: requiere Redshift + Kinesis activos.
+-- Validado en AWS Academy (Redshift ra3.large) el 2026-11-12.
 -- ============================================================
 
--- MV base: parseo JSON de eventos desde Kinesis
 CREATE MATERIALIZED VIEW mv_kinesis_transactions
 AUTO REFRESH YES
 AS
 SELECT
-    -- Metadata de Kinesis
+    -- Metadata de Kinesis (procedencia / trazabilidad)
     approximate_arrival_timestamp,
     partition_key,
     shard_id,
@@ -34,9 +40,10 @@ SELECT
         from_varbyte(kinesis_data, 'utf-8'), 'event_id'
     ) AS event_id,
 
-    CAST(JSON_EXTRACT_PATH_TEXT(
+    -- event_time como TEXTO (evita función mutable; cast en downstream)
+    JSON_EXTRACT_PATH_TEXT(
         from_varbyte(kinesis_data, 'utf-8'), 'event_time'
-    ) AS TIMESTAMP) AS event_time,
+    ) AS event_time,
 
     JSON_EXTRACT_PATH_TEXT(
         from_varbyte(kinesis_data, 'utf-8'), 'merchant_id'
@@ -56,13 +63,6 @@ SELECT
 
 FROM kinesis_streaming."streaming-data-platform-events-dev";
 
--- Verificar MV creada
-SELECT
-    mv_name,
-    schema_name,
-    db_name,
-    is_stale,
-    state,
-    autorefresh
-FROM SYS_MV_STATE
-WHERE mv_name = 'mv_kinesis_transactions';
+-- Verificar MV creada y estado de auto-refresh
+SELECT * FROM STV_MV_INFO
+WHERE name = 'mv_kinesis_transactions';
