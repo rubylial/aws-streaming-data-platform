@@ -171,3 +171,11 @@ Iceberg usa **optimistic concurrency control** para los commits:
 | **Reintentos** | El conector Flink-Iceberg reintenta automáticamente con backoff exponencial (configurable via `commit.retry.num-retries`, default 4) |
 | **Resolución** | El retry lee el metadata actualizado, valida que sus cambios no conflictúen, y re-ejecuta el commit |
 | **ConcurrentModificationException** | Ocurre en Glue Catalog cuando `UpdateTable` detecta version mismatch. El conector lo captura y reintenta. |
+
+## Evidencias
+
+- `docs/evidence/pe5/Evidencia pe5.pdf` — capturas consola AWS Glue (tablas Iceberg) + consultas Athena (SHOW TABLES, DESCRIBE, SELECT)
+- `docs/evidence/pe5/mvn-test-iceberg.txt` — ejecución completa de IcebergLocalTest (BUILD SUCCESS)
+- `docs/evidence/pe5/PE5-iceberg-metadata-local.txt` — archivos JSON de metadata Iceberg (commits v1/v2, parquet particionados por merchant_id, manifests)
+
+Validado en AWS Academy Learner Lab (us-east-1), 2026-11-12: catálogo Glue + tablas Iceberg creadas y consultables en Athena. El tramo Flink→Iceberg **en S3/Glue** (escritura real desde Flink) queda como brecha de costo; se validó localmente con HadoopCatalog (mismo formato de metadata Iceberg).
