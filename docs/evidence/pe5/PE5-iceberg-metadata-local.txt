@@ -1,0 +1,64 @@
+============================================================
+PE5 — Evidencia: archivos JSON de metadata Iceberg
+============================================================
+Fuente : IcebergLocalTest (mvn test -Dtest=IcebergLocalTest)
+Catálogo: HadoopCatalog (filesystem local)
+Nota   : metadata Iceberg REAL generada por commits del sink.
+         En AWS se usa GlueCatalog + S3FileIO (mismo formato
+         de metadata); el run en S3 queda como brecha de costo.
+============================================================
+
+--- Commits de metadata Iceberg (log del runtime) ---
+[main] INFO org.apache.iceberg.hadoop.HadoopTableOperations - Committed a new metadata file <warehouse>/iceberg-warehouse/test_db/transactions/metadata/v1.metadata.json
+[main] INFO org.apache.iceberg.hadoop.HadoopTableOperations - Committed a new metadata file <warehouse>/iceberg-warehouse/test_db/merchant_aggregations/metadata/v1.metadata.json
+[IcebergFilesCommitter -> Sink: IcebergSink local_iceberg.test_db.transactions (1/1)#0] INFO org.apache.iceberg.hadoop.HadoopTableOperations - Committed a new metadata file <warehouse>/iceberg-warehouse/test_db/transactions/metadata/v2.metadata.json
+[IcebergFilesCommitter -> Sink: IcebergSink local_iceberg.test_db.merchant_aggregations (1/1)#0] INFO org.apache.iceberg.hadoop.HadoopTableOperations - Committed a new metadata file <warehouse>/iceberg-warehouse/test_db/merchant_aggregations/metadata/v2.metadata.json
+
+--- Estructura de archivos Iceberg generada ---
+
+--- Archivos Iceberg en warehouse ---
+  Metadata (.json):  4
+  Data (.parquet):   6
+  Manifests (.avro): 4
+
+--- Detalle de archivos ---
+  [metadata] test_db/transactions/metadata/v1.metadata.json
+  [metadata] test_db/transactions/metadata/v2.metadata.json
+  [metadata] test_db/merchant_aggregations/metadata/v1.metadata.json
+  [metadata] test_db/merchant_aggregations/metadata/v2.metadata.json
+  [data]     test_db/transactions/data/merchant_id=merchant-001/00000-0-02958cee-e2c8-49fa-beaf-c4ed7c4f4295-00001.parquet
+  [data]     test_db/transactions/data/merchant_id=merchant-002/00000-0-02958cee-e2c8-49fa-beaf-c4ed7c4f4295-00002.parquet
+  [data]     test_db/transactions/data/merchant_id=merchant-003/00000-0-02958cee-e2c8-49fa-beaf-c4ed7c4f4295-00003.parquet
+  [data]     test_db/merchant_aggregations/data/merchant_id=merchant-001/00000-0-6b82e9d3-ccba-4aab-907b-00cc399dd085-00001.parquet
+  [data]     test_db/merchant_aggregations/data/merchant_id=merchant-002/00000-0-6b82e9d3-ccba-4aab-907b-00cc399dd085-00002.parquet
+  [data]     test_db/merchant_aggregations/data/merchant_id=merchant-003/00000-0-6b82e9d3-ccba-4aab-907b-00cc399dd085-00003.parquet
+  [manifest] test_db/transactions/metadata/snap-4153883883768989139-1-d0b25caf-4683-43e8-bfc9-72cb4506d0b3.avro
+  [manifest] test_db/transactions/metadata/d0b25caf-4683-43e8-bfc9-72cb4506d0b3-m0.avro
+  [manifest] test_db/merchant_aggregations/metadata/045be5fc-ac62-4615-b612-847e147303ab-m0.avro
+  [manifest] test_db/merchant_aggregations/metadata/snap-686202040263174194-1-045be5fc-ac62-4615-b612-847e147303ab.avro
+[OK] Estructura Iceberg verificada: metadata + parquet + manifests
+[OK] Ambas tablas tienen metadata Iceberg independiente
+
+--- Particiones Iceberg ---
+  test_db/transactions/data/merchant_id=merchant-001
+  test_db/transactions/data/merchant_id=merchant-002
+  test_db/transactions/data/merchant_id=merchant-003
+  test_db/merchant_aggregations/data/merchant_id=merchant-001
+  test_db/merchant_aggregations/data/merchant_id=merchant-002
+  test_db/merchant_aggregations/data/merchant_id=merchant-003
+[OK] Particionado por merchant_id verificado en filesystem
+
+========================================
+PE5 Iceberg Local Test — PASSED
+  Catálogo: HadoopCatalog (local)
+  Tablas creadas: transactions, merchant_aggregations
+  Datos: 5 transacciones + 4 agregaciones
+  Parquet data files: 6
+  Metadata snapshots: 4
+  Manifest files: 4
+  Commit atómico: verificado (INSERT INTO + await exitoso)
+  Particionado: merchant_id
+  Nota: en producción usa GlueCatalog + S3FileIO
+========================================
+[main] INFO org.apache.flink.test.util.MiniClusterWithClientResource - Finalization triggered: Cluster shutdown is going to be initiated.
+[main] INFO org.apache.flink.runtime.minicluster.MiniCluster - Shutting down Flink Mini Cluster
