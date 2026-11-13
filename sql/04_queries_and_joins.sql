@@ -117,7 +117,7 @@ SELECT
 FROM mv_kinesis_transactions mv
 LEFT JOIN lakehouse.merchant_aggregations agg
     ON mv.merchant_id = agg.merchant_id
-   AND mv.event_time >= agg.window_start
-   AND mv.event_time < agg.window_end
+   AND CAST(mv.event_time AS TIMESTAMP) >= agg.window_start
+   AND CAST(mv.event_time AS TIMESTAMP) < agg.window_end
 ORDER BY mv.event_time DESC
 LIMIT 50;
