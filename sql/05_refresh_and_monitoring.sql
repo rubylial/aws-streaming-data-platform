@@ -50,17 +50,14 @@ LIMIT 20;
 
 -- Medir latencia: diferencia entre event_time y arrival_timestamp
 SELECT
-    MIN(DATEDIFF(millisecond, event_time, approximate_arrival_timestamp))
-        AS min_latency_ms,
-    AVG(DATEDIFF(millisecond, event_time, approximate_arrival_timestamp))
-        AS avg_latency_ms,
-    MAX(DATEDIFF(millisecond, event_time, approximate_arrival_timestamp))
-        AS max_latency_ms,
+    MIN(DATEDIFF(millisecond, CAST(event_time AS TIMESTAMP), approximate_arrival_timestamp)) AS min_latency_ms,
+    AVG(DATEDIFF(millisecond, CAST(event_time AS TIMESTAMP), approximate_arrival_timestamp)) AS avg_latency_ms,
+    MAX(DATEDIFF(millisecond, CAST(event_time AS TIMESTAMP), approximate_arrival_timestamp)) AS max_latency_ms,
     PERCENTILE_CONT(0.95) WITHIN GROUP (
-        ORDER BY DATEDIFF(millisecond, event_time, approximate_arrival_timestamp)
+        ORDER BY DATEDIFF(millisecond, CAST(event_time AS TIMESTAMP), approximate_arrival_timestamp)
     ) AS p95_latency_ms
 FROM mv_kinesis_transactions
-WHERE event_time >= DATEADD(hour, -1, GETDATE());
+WHERE CAST(event_time AS TIMESTAMP) >= DATEADD(hour, -1, GETDATE());
 
 -- Freshness: cuánto tiempo tiene el dato más reciente
 SELECT
